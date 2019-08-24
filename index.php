@@ -1,6 +1,11 @@
 <?php
-require_once "Grafos.php";
+require_once "GrafoMatriz.php";
 
-$teste = new Grafos(true, false);
+$teste = new GrafoMatriz(true, false);
 
-print $teste->teste();
+$teste->inserirVertice("A");
+$teste->inserirVertice("B");
+$teste->inserirVertice("C");
+print_r($teste->imprimeGrafo());
+
+
