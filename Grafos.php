@@ -1,10 +1,10 @@
 <?php
 
-class Grafos {
+abstract class Grafos {
     
     // 1 para sim
-    private  $direcionado;
-    private  $ponderado;
+    protected  $direcionado;
+    protected  $ponderado;
     
     function __construct(bool $ehdirecionado, bool $ehponderado){
         $this->direcionado = $ehdirecionado;
