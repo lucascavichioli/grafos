@@ -16,24 +16,13 @@ class GrafoMatriz extends Grafos{
         for($linha = 0; $linha < count($this->grafo); $linha++){
              $this->grafo[$linha] = array_pad($this->grafo[$linha],count($this->grafo),0);
         }
-        $nomeVertices[]=$vertice;
+        $this->nomeVertices[]=$vertice;
         return true;
-        
-        
-        // for($linha = 0; $linha < count($linha); $linha++){
-        //     for($coluna = 0; $coluna <= count($this->grafo); $coluna++){
-        //         $grafo[$vertice][$vertice] = 0;
-        //     }
-        // }
-        // return true; 
-        
-        // //$this->grafo += array($vertice => array($vertice => 1));
-        // return true;
     }
     
-    public function labelVertice(int $indice) : string{
+    public function labelVertice(int $indice) : string {
            
-        return $this->$nomeVertices[$indice];
+        return $this->nomeVertices[$indice];
         
     }
     
@@ -46,11 +35,6 @@ class GrafoMatriz extends Grafos{
           }
             echo "<br>";
          }
-
-
-        // print "<pre>";
-        // print_r($this->grafo);
-        // print "</pre>";
     }
     
     public function inserirAresta(int $origem, int $destino, int $peso = 1) : bool {
