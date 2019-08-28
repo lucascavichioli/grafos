@@ -8,7 +8,7 @@ class GrafoLista extends Grafos {
 
 
     function __construct(bool $ehdirecionado, bool $ehponderado){
-        parent::__construct(bool $ehdirecionado, bool $ehponderado);
+        parent::__construct($ehdirecionado, $ehponderado);
     }
  
     public function inserirVertice(string $label) : bool {

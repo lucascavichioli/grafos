@@ -12,11 +12,12 @@ class GrafoMatriz extends Grafos{
     
     public function inserirVertice(string $vertice) : bool {
         
-        $this->$grafo[] = [];
+        $this->grafo[] = [];
         for($linha = 0; $linha < count($this->grafo); $linha++){
-             $this->$grafo[$linha] = array_pad($this->$grafo[$linha],count($this->grafo),0);
+             $this->grafo[$linha] = array_pad($this->grafo[$linha],count($this->grafo),0);
         }
         $nomeVertices[]=$vertice;
+        return true;
         
         
         // for($linha = 0; $linha < count($linha); $linha++){
@@ -38,10 +39,10 @@ class GrafoMatriz extends Grafos{
     
     public function imprimeGrafo() {
 
-        for ($row = 0; $row < count($grafo) ; $row++) {
+        for ($row = 0; $row < count($this->grafo) ; $row++) {
           echo " ".$row.": ";
-          for ($col = 0; $col < count($grafo[$row]); $col++) {      
-            echo "".$grafo[$row][$col]."";
+          for ($col = 0; $col < count($this->grafo[$row]); $col++) {      
+            echo "".$this->grafo[$row][$col]."";
           }
             echo "<br>";
          }
