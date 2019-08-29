@@ -3,7 +3,7 @@ Disciplina de grafos univali
 
 Estrutura básica do grafo:
 <br>
-# A) Classe base Grafo com:
+## A) Classe base Grafo com:
 - [x] Vetor de vértices
 - [x] Se o grafo é ponderado
 - [x] Se o grafo é direcionado
