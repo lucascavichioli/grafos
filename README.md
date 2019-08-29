@@ -17,3 +17,17 @@ Estrutura básica do grafo:
 - [ ] Verificar a existência e retornar o peso de uma arestas
 - [ ] Retornar os vizinhos de um vértice
 - [ ] Imprimir o grafo (console)
+
+# Busca
+Dentro da classe pai:
+- [ ] Busca em largura:
+- [ ] Não precisa ter um destino
+- [ ] Retornar uma lista da ordem de visita dos vértices
+## Busca em profundidade:
+- [ ] Não precisa ter um destino
+- [ ] Retornar uma lista da ordem de visita dos vértices
+## Dijkstra:
+- [ ] Não precisa ter um destino
+- [ ] Retornar duas listas:
+- [ ] Distância dos vértices para a origem
+- [ ] Vértice anterior
