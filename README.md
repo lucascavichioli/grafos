@@ -7,10 +7,10 @@ Estrutura básica do grafo:
 - [x] Vetor de vértices
 - [x] Se o grafo é ponderado
 - [x] Se o grafo é direcionado
-# B) Classes derivadas:
+## B) Classes derivadas:
 - [x] Grafo Matriz
 - [x] Grafo Lista
-# C) Cada classe derivada deve conter:
+## C) Cada classe derivada deve conter:
 - [ ] Estrutura de arestas
 - [ ] Inserção de vértices
 - [ ] Inserção de arestas
