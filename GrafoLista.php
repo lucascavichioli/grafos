@@ -11,33 +11,47 @@ class GrafoLista extends Grafos {
         parent::__construct($ehdirecionado, $ehponderado);
     }
  
-    public function inserirVertice(string $label) : bool {
-        $this->$grafo[] = [];
-        $nomeVertices[]=$vertice;
-        
+    public function inserirVertice(string $vertice) : bool {
+        $this->grafo[] = [];
+        $this->nomeVertices[]=$vertice;
+		return true;
     }
     
     public function labelVertice(int $indice) : string{
           
-        return $this->$nomeVertices[$indice];
+        return $this->nomeVertices[$indice];
     }
     
     public function imprimeGrafo() : void {
-
+		  for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
+			print " ".$this->nomeVertices[$linha].": ";
+          for ($coluna = 0; $coluna < count($this->grafo[$linha]); $coluna++) {      
+            print "  ".$this->grafo[$linha][$coluna]."  ";
+          }
+            print "<br>";
+         }
+		/*foreach($this->grafo as $indices){
+			print $this->grafo[];
+			foreach($indices as $vertices => $val){
+				print $vertices;
+			}
+		}*/
     }
     
     public function inserirAresta(int $origem, int $destino, int $peso = 1) : bool {
-        if($this->$ehponderado){
-            $this->grafo[$origem][] = [$nomeVertices[$destino],$peso];
+        if($this->ponderado){
+            $this->grafo[$origem][] = [$this->nomeVertices[$destino],$peso];
+			return true;
         }else{
-            $this->grafo[$origem][] = $nomeVertices[$destino];
+            $this->grafo[$origem][] = $this->nomeVertices[$destino];
+			return true;
         }
         
     }
     
     public function existeAresta(int $origem, int $destino) : bool {
         
-        if($this->$ehponderado){
+        if($this->ponderado){
             for($coluna = 0; $coluna < count($this->grafo[$origem]); $linha++){
                 if($this->grafo[$origem][$coluna][0] == $nomeVertices[$destino]){
                     return true;
@@ -58,7 +72,7 @@ class GrafoLista extends Grafos {
     
     public function retornarVizinhos(int $vertice) : array { //vector<int>
         
-        return $this->$grafo[$vertice]  
+        return $this->$grafo[$vertice]  ;
     }
     
 }

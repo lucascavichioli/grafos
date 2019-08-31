@@ -30,11 +30,11 @@ class GrafoMatriz extends Grafos{
     public function imprimeGrafo() {
 
         for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
-          echo " ".$linha.": ";
+          print " ".$this->nomeVertices[$linha].": ";
           for ($coluna = 0; $coluna < count($this->grafo[$linha]); $coluna++) {      
-            echo "".$this->grafo[$linha][$coluna]."";
+            print "  ".$this->grafo[$linha][$coluna]."  ";
           }
-            echo "<br>";
+            print "<br>";
          }
     }
     
@@ -63,11 +63,11 @@ class GrafoMatriz extends Grafos{
                 $this->listaVizinhos[] = $chave;
             }
         }
-      /*  for($coluna = 0; $coluna < count($this->grafo[$vertice]); $linha++){
+        /*for($coluna = 0; $coluna < count($this->grafo[$vertice]); $linha++){
            if($this->grafo[$vertice][$coluna] != 0){
-                $lista[] = $this->nomeVertices[$coluna];
+                $listaVizinhos[] = $this->nomeVertices[$coluna];
            }
-       }*/
+       } */
 
         return $this->listaVizinhos;
 

@@ -1,26 +1,41 @@
 <?php
 require_once "GrafoMatriz.php";
+require_once "GrafoLista.php";
 
-$teste = new GrafoMatriz(false, true);
-
-$teste->inserirVertice("A");
-$teste->inserirVertice("B");
-$teste->inserirVertice("C");
-$teste->inserirVertice("D");
-$teste->inserirVertice("E");
-$teste->inserirVertice("F");
-$teste->inserirVertice("G");
-$teste->inserirVertice("H");
-$teste->inserirVertice("I");
-$teste->inserirAresta(2, 0);
-$teste->inserirAresta(3, 6);
-$teste->inserirAresta(5, 7);
-print_r($teste->imprimeGrafo());
+//grafo matriz
+$grafoMatriz = new GrafoMatriz(false, true);
+$grafoMatriz->inserirVertice("A");
+$grafoMatriz->inserirVertice("B");
+$grafoMatriz->inserirVertice("C");
+$grafoMatriz->inserirVertice("C");
+$grafoMatriz->inserirVertice("C");
+$grafoMatriz->inserirVertice("E");
+$grafoMatriz->inserirVertice("D");
+$grafoMatriz->inserirVertice("S");
+$grafoMatriz->inserirVertice("I");
+$grafoMatriz->inserirAresta(2, 0, 3);
+$grafoMatriz->inserirAresta(3, 6, 2);
+$grafoMatriz->inserirAresta(5, 7, 7);
+$grafoMatriz->inserirAresta(5, 3);
+print " Grafo: <br>"; 
+print_r($grafoMatriz->imprimeGrafo());
 print "<br>";
-print_r($teste->labelVertice(0));
+print " Label Vertice: "; 
+print_r($grafoMatriz->labelVertice(0));
+print "<br>";
+print " Existe Aresta?: "; 
+var_dump($grafoMatriz->existeAresta(2, 0));
+print "<br>";
+print " Vizinhos: "; 
+print_r($grafoMatriz->retornarVizinhos(7));
+print "<br>";
+//Grafo lista
 
-var_dump($teste->existeAresta(2, 0));
+$grafoLista = new GrafoLista(false, true);
 
-print_r($teste->retornarVizinhos(6));
-
-
+$grafoLista->inserirVertice("A");
+$grafoLista->inserirVertice("B");
+$grafoLista->inserirVertice("C");
+$grafoLista->inserirVertice("D");
+$grafoLista->inserirAresta(1, 2, 5);
+$grafoLista->imprimeGrafo();
