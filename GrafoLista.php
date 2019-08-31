@@ -4,7 +4,8 @@ require_once "Grafos.php";
 class GrafoLista extends Grafos {
     
     public $grafo = [];
-    public $nomeVertices=[];
+	public $listaVizinhos = [];
+    public $nomeVertices = [];
 
 
     function __construct(bool $ehdirecionado, bool $ehponderado){
@@ -22,9 +23,6 @@ class GrafoLista extends Grafos {
     }
     
     public function imprimeGrafo() : void {
-		print "<pre>";
-		print_r($this->grafo);
-		print "</pre>";
 		
 		for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
 			print " ".$this->nomeVertices[$linha].": ";
@@ -78,6 +76,13 @@ class GrafoLista extends Grafos {
     }
     
     public function retornarVizinhos(int $vertice) : array { //vector<int>
-        return $this->$grafo[$vertice]  ;
+        foreach($this->grafo[$vertice] as $chave => $valor){
+            if($valor != 0){
+                //$this->listaVizinhos[$chave] = $valor;
+                $this->listaVizinhos[] = $chave;
+            }
+        }
+        return $this->listaVizinhos;
+
     }
 }

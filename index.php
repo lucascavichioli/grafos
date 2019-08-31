@@ -47,5 +47,11 @@ $grafoLista->inserirAresta(3, 1, 9);
 $grafoLista->inserirAresta(2, 0, 12);
 $grafoLista->imprimeGrafo();
 print "<br>";
+print " Label Vertice: ";
+print $grafoLista->labelVertice(3);
+print "<br>";
 print " Existe Aresta?: ";
 print $grafoLista->existeAresta(1, 2);
+print "<br>";
+print " Vizinhos: "; 
+foreach($grafoLista->retornarVizinhos(1) as $indice){ print $indice." ";}
