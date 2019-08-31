@@ -15,7 +15,7 @@ Estrutura básica do grafo:
 - [x] Inserção de vértices
 - [x] Inserção de arestas
 - [x] Verificar a existência e retornar o peso de uma arestas
-- [ ] Retornar os vizinhos de um vértice
+- [x] Retornar os vizinhos de um vértice
 - [x] Imprimir o grafo (console)
 
 # Busca
