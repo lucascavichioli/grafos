@@ -33,17 +33,16 @@ print "<br>";
 print "<br>";
 //Grafo lista
 print " GrafoMatriz: <br>"; 
-$grafoLista = new GrafoLista(false, false);
+$grafoLista = new GrafoLista(true, false);
 
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");
 $grafoLista->inserirVertice("D");
+//$grafoLista->inserirVertice("E");
 $grafoLista->inserirAresta(1, 2, 5);
-$grafoLista->inserirAresta(1, 4, 7);
-$grafoLista->inserirAresta(1, 1, 8);
 $grafoLista->inserirAresta(3, 1, 9);
-$grafoLista->inserirAresta(2, 4, 12);
+$grafoLista->inserirAresta(2, 0, 12);
 $grafoLista->imprimeGrafo();
 print "<br>";
 print " Existe Aresta?: "; 
