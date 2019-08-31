@@ -62,12 +62,16 @@ class GrafoLista extends Grafos {
 		}
     }
     
-	public function existeAresta(int $origem, int $destino) : bool {
+	public function existeAresta(int $origem, int $destino) { //: bool {
         if(empty($this->grafo[$origem][$destino])){
-			return false;
+			return "Não. Sem Peso";
 		}else{
 			if($this->grafo[$origem][$destino] != 0){
-				return true;
+				if($this->ponderado){
+					return "Sim. Peso: " . $this->grafo[$origem][$destino];
+				}else{
+					return "Sim. Sem Peso";
+				}
 			}
 			return false;  
 		}

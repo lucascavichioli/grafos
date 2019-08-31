@@ -29,13 +29,13 @@ print $grafoMatriz->existeAresta(2, 0);
 //if($grafoMatriz->existeAresta(2, 0)){print "Sim";}else{print "Não";};
 print "<br>";
 print " Vizinhos: "; 
-print_r($grafoMatriz->retornarVizinhos(7));
+foreach($grafoMatriz->retornarVizinhos(7) as $indice){ print $indice." ";}
 print "<br>";
 print "<br>";
 print "<br>";
 //Grafo lista
 print " GrafoLista: <br>"; 
-$grafoLista = new GrafoLista(true, false);
+$grafoLista = new GrafoLista(true, true);
 
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
@@ -47,5 +47,5 @@ $grafoLista->inserirAresta(3, 1, 9);
 $grafoLista->inserirAresta(2, 0, 12);
 $grafoLista->imprimeGrafo();
 print "<br>";
-print " Existe Aresta?: "; 
-if($grafoLista->existeAresta(2, 4)){print "Sim";}else{print "Não";};
+print " Existe Aresta?: ";
+print $grafoLista->existeAresta(1, 2);
