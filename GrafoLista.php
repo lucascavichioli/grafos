@@ -26,11 +26,16 @@ class GrafoLista extends Grafos {
 		  for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
 			print " ".$this->nomeVertices[$linha].": ";
           for ($coluna = 0; $coluna < count($this->grafo[$linha]); $coluna++) {      
-            print "  ".$this->grafo[$linha][$coluna]."  ";
+			if($this->ponderado){
+				print "  ".$this->grafo[$linha][$coluna][0].":  ".$this->grafo[$linha][$coluna][1]."";
+			}else{
+				print "  ".$this->grafo[$linha][$coluna]."  ";
+			}
+
           }
             print "<br>";
          }
-		/*foreach($this->grafo as $indices){
+		/*foreach($this->grafo as $indices => $valor){
 			print $this->grafo[];
 			foreach($indices as $vertices => $val){
 				print $vertices;

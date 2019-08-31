@@ -31,7 +31,7 @@ print_r($grafoMatriz->retornarVizinhos(7));
 print "<br>";
 //Grafo lista
 
-$grafoLista = new GrafoLista(false, true);
+$grafoLista = new GrafoLista(false, false);
 
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
