@@ -39,21 +39,37 @@ class GrafoMatriz extends Grafos{
     }
     
     public function inserirAresta(int $origem, int $destino, int $peso=1) : bool {
-        if($this->direcionado){
-            $this->grafo[$origem][$destino] = $peso;
-            return true; 
-        } else {
-            $this->grafo[$origem][$destino] = $peso;
-            $this->grafo[$destino][$origem] = $peso;
-            return true; 
-        }
+		if($this->ponderado){
+			if($this->direcionado){
+				$this->grafo[$origem][$destino] = $peso;
+				return true; 
+			} else {
+				$this->grafo[$origem][$destino] = $peso;
+				$this->grafo[$destino][$origem] = $peso;
+				return true; 
+			}
+		}else{
+			if($this->direcionado){
+				$this->grafo[$origem][$destino] = 1;
+				return true; 
+			} else {
+				$this->grafo[$origem][$destino] = 1;
+				$this->grafo[$destino][$origem] = 1;
+				return true; 
+			}
+		}
+        
         
     }
     
-    public function existeAresta(int $origem, int $destino) : bool {
-        
-        return $this->grafo[$origem][$destino] != 0;
-        
+    public function existeAresta(int $origem, int $destino) { // : bool {
+		if($this->grafo[$origem][$destino] != 0 ){
+			if($this->ponderado){
+				return "Sim. Peso: ".$this->grafo[$origem][$destino];
+			}else{
+				return "Sim. Sem peso";
+			}
+		}
     }
     
     public function retornarVizinhos(int $vertice) : array { //vector<int>

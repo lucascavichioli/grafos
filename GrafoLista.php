@@ -66,10 +66,10 @@ class GrafoLista extends Grafos {
         if(empty($this->grafo[$origem][$destino])){
 			return false;
 		}else{
-			if($this->grafo[$origem][$destino] > 0){
+			if($this->grafo[$origem][$destino] != 0){
 				return true;
 			}
-				return false;  
+			return false;  
 		}
     }
     
