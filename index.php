@@ -33,10 +33,10 @@ foreach($grafoMatriz->retornarVizinhos(7) as $indice){ print $indice." ";}
 print "<br>";
 print "<br>";
 print "<br>";
+
 //Grafo lista
 print " GrafoLista: <br>"; 
 $grafoLista = new GrafoLista(true, true);
-
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");
@@ -48,10 +48,10 @@ $grafoLista->inserirAresta(2, 0, 12);
 $grafoLista->imprimeGrafo();
 print "<br>";
 print " Label Vertice: ";
-print $grafoLista->labelVertice(3);
+print $grafoLista->labelVertice(2);
 print "<br>";
 print " Existe Aresta?: ";
-print $grafoLista->existeAresta(1, 2);
+print $grafoLista->existeAresta(1, 3);
 print "<br>";
 print " Vizinhos: "; 
 foreach($grafoLista->retornarVizinhos(1) as $indice){ print $indice." ";}

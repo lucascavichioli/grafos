@@ -2,11 +2,6 @@
 require_once "Grafos.php";
 
 class GrafoLista extends Grafos {
-    
-    public $grafo = [];
-	public $listaVizinhos = [];
-    public $nomeVertices = [];
-
 
     function __construct(bool $ehdirecionado, bool $ehponderado){
         parent::__construct($ehdirecionado, $ehponderado);

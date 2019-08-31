@@ -3,10 +3,6 @@ require_once "Grafos.php";
 
 class GrafoMatriz extends Grafos{
     
-    public $grafo = [];
-    public $nomeVertices = [];
-    public $listaVizinhos = [];
-    
     function __construct(bool $ehdirecionado, bool $ehponderado){
         parent::__construct($ehdirecionado, $ehponderado);
     }
