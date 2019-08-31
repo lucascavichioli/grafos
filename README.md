@@ -20,7 +20,7 @@ Estrutura básica do grafo:
 
 # Busca
 Dentro da classe pai:
-- [ ] Busca em largura:
+## Busca em largura:
 - [ ] Não precisa ter um destino
 - [ ] Retornar uma lista da ordem de visita dos vértices
 ## Busca em profundidade:
