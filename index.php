@@ -31,11 +31,15 @@ print_r($grafoMatriz->retornarVizinhos(7));
 print "<br>";
 //Grafo lista
 
-$grafoLista = new GrafoLista(false, false);
+$grafoLista = new GrafoLista(false, true);
 
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");
 $grafoLista->inserirVertice("D");
 $grafoLista->inserirAresta(1, 2, 5);
+$grafoLista->inserirAresta(1, 4, 7);
+$grafoLista->inserirAresta(1, 1, 8);
+$grafoLista->inserirAresta(3, 1, 9);
+$grafoLista->inserirAresta(2, 4, 12);
 $grafoLista->imprimeGrafo();

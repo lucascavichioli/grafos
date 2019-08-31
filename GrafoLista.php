@@ -18,37 +18,34 @@ class GrafoLista extends Grafos {
     }
     
     public function labelVertice(int $indice) : string{
-          
         return $this->nomeVertices[$indice];
     }
     
     public function imprimeGrafo() : void {
-		  for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
+		print "<pre>";
+		print_r($this->grafo);
+		print "</pre>";
+		
+		for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
 			print " ".$this->nomeVertices[$linha].": ";
-          for ($coluna = 0; $coluna < count($this->grafo[$linha]); $coluna++) {      
-			if($this->ponderado){
-				print "  ".$this->grafo[$linha][$coluna][0].":  ".$this->grafo[$linha][$coluna][1]."";
-			}else{
-				print "  ".$this->grafo[$linha][$coluna]."  ";
+			foreach($this->grafo[$linha] as $indices => $valor){
+				if($this->ponderado){
+					print $indices . ":" . $valor . " ";
+				}else{
+					print $indices;
+				}
+				
 			}
-
-          }
             print "<br>";
-         }
-		/*foreach($this->grafo as $indices => $valor){
-			print $this->grafo[];
-			foreach($indices as $vertices => $val){
-				print $vertices;
-			}
-		}*/
+        }
     }
     
     public function inserirAresta(int $origem, int $destino, int $peso = 1) : bool {
         if($this->ponderado){
-            $this->grafo[$origem][] = [$this->nomeVertices[$destino],$peso];
+            $this->grafo[$origem][$destino] = $peso;
 			return true;
         }else{
-            $this->grafo[$origem][] = $this->nomeVertices[$destino];
+            $this->grafo[$origem][$destino] = 1;
 			return true;
         }
         
