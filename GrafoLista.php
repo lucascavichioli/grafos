@@ -22,9 +22,6 @@ class GrafoLista extends Grafos {
     }
     
     public function imprimeGrafo() : void {
-		print "<pre>";
-		print_r($this->grafo);
-		print "</pre>";
 		
 		for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
 			print " ".$this->nomeVertices[$linha].": ";
@@ -51,25 +48,15 @@ class GrafoLista extends Grafos {
         
     }
     
-    public function existeAresta(int $origem, int $destino) : bool {
-        
-        if($this->ponderado){
-            for($coluna = 0; $coluna < count($this->grafo[$origem]); $linha++){
-                if($this->grafo[$origem][$coluna][0] == $nomeVertices[$destino]){
-                    return true;
-                }
-            }
-            return false;
-        }else{
-            for($coluna = 0; $coluna < count($this->grafo[$origem]); $linha++){
-                if($this->grafo[$origem][$coluna] == $nomeVertices[$destino]){
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        
+	public function existeAresta(int $origem, int $destino) : bool {
+        if(empty($this->grafo[$origem][$destino])){
+			return false;
+		}else{
+			if($this->grafo[$origem][$destino] > 0){
+				return true;
+			}
+				return false;  
+		}
     }
     
     public function retornarVizinhos(int $vertice) : array { //vector<int>

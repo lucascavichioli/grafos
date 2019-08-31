@@ -17,7 +17,7 @@ $grafoMatriz->inserirAresta(2, 0, 3);
 $grafoMatriz->inserirAresta(3, 6, 2);
 $grafoMatriz->inserirAresta(5, 7, 7);
 $grafoMatriz->inserirAresta(5, 3);
-print " Grafo: <br>"; 
+print " GrafoMatriz: <br>"; 
 print_r($grafoMatriz->imprimeGrafo());
 print "<br>";
 print " Label Vertice: "; 
@@ -29,9 +29,11 @@ print "<br>";
 print " Vizinhos: "; 
 print_r($grafoMatriz->retornarVizinhos(7));
 print "<br>";
+print "<br>";
+print "<br>";
 //Grafo lista
-
-$grafoLista = new GrafoLista(false, true);
+print " GrafoMatriz: <br>"; 
+$grafoLista = new GrafoLista(false, false);
 
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
@@ -43,3 +45,6 @@ $grafoLista->inserirAresta(1, 1, 8);
 $grafoLista->inserirAresta(3, 1, 9);
 $grafoLista->inserirAresta(2, 4, 12);
 $grafoLista->imprimeGrafo();
+print "<br>";
+print " Existe Aresta?: "; 
+if($grafoLista->existeAresta(2, 4)){print "Sim";}else{print "Não";};
