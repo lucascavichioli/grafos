@@ -49,8 +49,56 @@ abstract class Grafos {
 
     }
 
-    protected function buscaProfundidade(){
+    protected function buscaProfundidade(array $grafo, int $origem){
+          /*  $pilha = [];
+            //$visitado = []; // 1: visitado, 2: naoVisitado, 3: final e sem vizinhos disponiveis
+            foreach($grafo as $vv ){
+                $visitado[$vv] = 2;
+            }
+            $visitado[$origem] = 1;
+            array_push($pilha, $origem);
+            while(!empty($pilha)){
 
+
+            }*/
+
+        /* 
+            1  para  u ← 1  até  n  faça
+            2  cor[u] ← branco
+            3  cor[r] ← cinza
+            4  P ← Cria-Pilha (r)
+            5  enquanto  P  não estiver vazia faça
+            6  u ← Copia-Topo-da-Pilha (P)
+            7  se  Adj[u]  contém  v  tal que  cor[v] = branco
+            10  então  cor[v] ← cinza
+            11  Coloca-na-Pilha (v, P)
+            12  senão  cor[u] ← preto
+            13  Tira-da-Pilha (P)
+            14  devolva  cor[1..n] 
+        */
+        /*
+            Defina um nó inicial
+            Enquanto este não for um nó objetivo ou final(nó cuja adjacência já tenha sido toda visitada)
+                Escolha um de seus adjacentes ainda não visitados
+                Visite-o
+            Se nó final não objetivo:
+                Volte ao pai deste
+                Se houver pai, repita. 
+                Senão escolha outro nó inicial
+
+            Implementação:
+            void visitaP(GRAFO, nó inicial){
+                nóinicial = amarelo;
+                array adjacencia de nóinicial(v) = vizinhos(nóinicial);
+                while(v (existir adjacencia)){
+                    if(cor do vertice == branco){
+                        visitaP(grafo, v->vertice);
+                    }
+                    v = v->prox;
+                }
+                cor[u] = vermelho;
+            }
+        */
 
     }
 
