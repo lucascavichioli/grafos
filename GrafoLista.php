@@ -77,4 +77,9 @@ class GrafoLista extends Grafos {
 	public function retornaBuscaLargura(int $origem){
 		return parent::buscaLargura($this->grafo, $origem);
 	  }
+
+	  public function retornaBuscaProfundidade(int $origem){
+		$visitados = [];
+		return parent::buscaProfundidade($origem,$visitados);
+	  }
 }

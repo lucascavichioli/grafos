@@ -49,9 +49,16 @@ abstract class Grafos {
 
     }
 
-    protected function buscaProfundidade(){
-
-
+    protected function buscaProfundidade( int $origem ,array $visitados) : array{
+        
+        $visitados[$origem] = true;
+        $saida[$origem] = $origem;
+          foreach ($this->vizinhos($origem) as $v) { //para cada vizinho
+            if(!isset($visitados[$v])){                        //que não está marcado
+                  $saida = $saida + $this->buscaProfundidade($v,$visitados);
+            }  
+         }
+         return $saida ;
     }
 
     protected function dijkstra(){

@@ -76,4 +76,8 @@ class GrafoMatriz extends Grafos{
       return parent::buscaLargura($this->grafo, $origem);
     }
     
+    public function retornaBuscaProfundidade(int $origem){
+      $visitados = [];
+      return parent::buscaProfundidade($origem,$visitados);
+    }
 }
