@@ -49,6 +49,7 @@ abstract class Grafos {
 
     }
 
+
     protected function buscaProfundidade( int $origem ,array $visitados) : array{
         
         $visitados[$origem] = true;
@@ -59,7 +60,8 @@ abstract class Grafos {
             }  
          }
          return $saida ;
-    }
+
+    
 
     protected function dijkstra(){
 

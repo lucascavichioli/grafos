@@ -23,7 +23,7 @@ class GrafoMatriz extends Grafos{
         
     }
     
-    public function imprimeGrafo() {
+    public function imprimeGrafo() : void {
 
         for ($linha = 0; $linha < count($this->grafo) ; $linha++) {
           print " ".$this->nomeVertices[$linha].": ";
@@ -74,6 +74,10 @@ class GrafoMatriz extends Grafos{
 
     public function retornaBuscaLargura(int $origem){
       return parent::buscaLargura($this->grafo, $origem);
+    }
+
+    public function retornaBuscaProfundidade(int $origem){
+      return parent::buscaProfundidade($this->grafo, $origem);
     }
     
     public function retornaBuscaProfundidade(int $origem){
