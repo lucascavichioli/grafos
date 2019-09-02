@@ -1,5 +1,4 @@
 # Grafos
-Disciplina de grafos univali
 
 Estrutura básica do grafo:
 <br>
