@@ -3,20 +3,27 @@ require_once "GrafoMatriz.php";
 require_once "GrafoLista.php";
 
 //grafo matriz
-$grafoMatriz = new GrafoMatriz(false, true);
+$grafoMatriz = new GrafoMatriz(false, false);
 $grafoMatriz->inserirVertice("A");
 $grafoMatriz->inserirVertice("B");
 $grafoMatriz->inserirVertice("C");
-$grafoMatriz->inserirVertice("C");
-$grafoMatriz->inserirVertice("C");
-$grafoMatriz->inserirVertice("E");
 $grafoMatriz->inserirVertice("D");
-$grafoMatriz->inserirVertice("S");
-$grafoMatriz->inserirVertice("I");
-$grafoMatriz->inserirAresta(2, 0, 3);
-$grafoMatriz->inserirAresta(3, 6, 2);
-$grafoMatriz->inserirAresta(5, 7, 7);
-$grafoMatriz->inserirAresta(5, 3);
+$grafoMatriz->inserirVertice("E");
+$grafoMatriz->inserirVertice("F");
+$grafoMatriz->inserirVertice("G");
+$grafoMatriz->inserirVertice("H");
+$grafoMatriz->inserirAresta(0, 1, 3);
+$grafoMatriz->inserirAresta(0, 2, 2);
+$grafoMatriz->inserirAresta(0, 3, 7);
+$grafoMatriz->inserirAresta(0, 4);
+$grafoMatriz->inserirAresta(1, 5);
+$grafoMatriz->inserirAresta(2, 3);
+$grafoMatriz->inserirAresta(4, 1);
+$grafoMatriz->inserirAresta(4, 3);
+$grafoMatriz->inserirAresta(4, 7);
+$grafoMatriz->inserirAresta(3, 2);
+$grafoMatriz->inserirAresta(3, 6);
+$grafoMatriz->inserirAresta(6, 7);
 print " GrafoMatriz: <br>"; 
 print_r($grafoMatriz->imprimeGrafo());
 print "<br>";
@@ -29,8 +36,10 @@ print $grafoMatriz->existeAresta(2, 0);
 //if($grafoMatriz->existeAresta(2, 0)){print "Sim";}else{print "Não";};
 print "<br>";
 print " Vizinhos: "; 
-foreach($grafoMatriz->retornarVizinhos(7) as $indice){ print $indice." ";}
+foreach($grafoMatriz->retornarVizinhos(3) as $indice){ print $indice." ";}
 print "<br>";
+print "Ordem de visita (Busca em largura): ";
+foreach($grafoMatriz->retornaBuscaLargura(2) as $indice){ print $indice." ";}
 print "<br>";
 print "<br>";
 
@@ -55,3 +64,12 @@ print $grafoLista->existeAresta(1, 3);
 print "<br>";
 print " Vizinhos: "; 
 foreach($grafoLista->retornarVizinhos(1) as $indice){ print $indice." ";}
+print "<br>";
+print "Ordem de visita (Busca em largura): ";
+foreach($grafoLista->retornaBuscaLargura(2) as $indice){ print $indice." ";}
+print "<br>";
+print "<br>";
+print "<br>";
+
+
+

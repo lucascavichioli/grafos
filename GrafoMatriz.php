@@ -2,7 +2,7 @@
 require_once "Grafos.php";
 
 class GrafoMatriz extends Grafos{
-    
+
     function __construct(bool $ehdirecionado, bool $ehponderado){
         parent::__construct($ehdirecionado, $ehponderado);
     }
@@ -67,22 +67,13 @@ class GrafoMatriz extends Grafos{
 			}
 		}
     }
-    
-    public function retornarVizinhos(int $vertice) : array { //vector<int>
-        foreach($this->grafo[$vertice] as $chave => $valor){
-            if($valor != 0){
-                //$this->listaVizinhos[$chave] = $valor;
-                $this->listaVizinhos[] = $chave;
-            }
-        }
-        /*for($coluna = 0; $coluna < count($this->grafo[$vertice]); $linha++){
-           if($this->grafo[$vertice][$coluna] != 0){
-                $listaVizinhos[] = $this->nomeVertices[$coluna];
-           }
-       } */
 
-        return $this->listaVizinhos;
+    public function retornarVizinhos(int $vertice) : array{
+      return parent::vizinhos($vertice);
+    }
 
+    public function retornaBuscaLargura(int $origem){
+      return parent::buscaLargura($this->grafo, $origem);
     }
     
 }

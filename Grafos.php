@@ -6,7 +6,7 @@ abstract class Grafos {
     protected  $direcionado;
     protected  $ponderado;
     //propriedades de um grafo
-	protected $grafo = [];
+    protected $grafo = [];
     protected $nomeVertices = [];
     protected $listaVizinhos = [];
 	
@@ -14,6 +14,48 @@ abstract class Grafos {
         $this->direcionado = $ehdirecionado;
         $this->ponderado = $ehponderado;
     }
+
+    protected function vizinhos(int $vertice) : array { //vector<int>
+        $this->listaVizinhos = []; //limpa lista de vizinhos
+        foreach($this->grafo[$vertice] as $chave => $valor){
+            if($valor != 0){
+                $this->listaVizinhos[] = $chave;
+            }
+        }
+        return $this->listaVizinhos;
+    }
     
-    
+    protected function buscaLargura(array $grafo, int $origem){
+        $saida = [];
+        $fila = [];
+        $visitados = [];
+
+        $visitados[$origem] = true; //marca vertice de origem
+        
+        array_push($fila, $origem); //adiciona a origem no inicio da fila
+
+        while(!empty($fila)){   
+            $verticeIni = array_shift($fila);
+            $saida[] = $verticeIni;
+            foreach ($this->vizinhos($verticeIni) as $v) { //para cada vizinho
+               if(!isset($visitados[$v])){                        //que não está marcado
+                    $visitados[$v] = true; //marca vizinho
+                    array_push($fila, $v); //adiciona vizinho na fila
+               }
+            }
+        }
+        
+        return $saida;
+
+    }
+
+    protected function buscaProfundidade(){
+
+
+    }
+
+    protected function dijkstra(){
+
+
+    }
 }

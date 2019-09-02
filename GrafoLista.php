@@ -71,13 +71,10 @@ class GrafoLista extends Grafos {
     }
     
     public function retornarVizinhos(int $vertice) : array { //vector<int>
-        foreach($this->grafo[$vertice] as $chave => $valor){
-            if($valor != 0){
-                //$this->listaVizinhos[$chave] = $valor;
-                $this->listaVizinhos[] = $chave;
-            }
-        }
-        return $this->listaVizinhos;
-
-    }
+		return parent::vizinhos($vertice);
+	}
+	
+	public function retornaBuscaLargura(int $origem){
+		return parent::buscaLargura($this->grafo, $origem);
+	  }
 }
