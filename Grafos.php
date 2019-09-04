@@ -25,7 +25,7 @@ abstract class Grafos {
         return $this->listaVizinhos;
     }
     
-    protected function buscaLargura(array $grafo, int $origem){
+    protected function buscaLargura(int $origem){ //removemos o parâmetro "array $grafo" .
         $saida = [];
         $fila = [];
         $visitados = [];
@@ -51,17 +51,16 @@ abstract class Grafos {
 
 
     protected function buscaProfundidade( int $origem ,array $visitados) : array{
-        
         $visitados[$origem] = true;
+        //$tempo = $tempo + 1;
         $saida[$origem] = $origem;
-          foreach ($this->vizinhos($origem) as $v) { //para cada vizinho
-            if(!isset($visitados[$v])){                        //que não está marcado
-                  $saida = $saida + $this->buscaProfundidade($v,$visitados);
-            }  
-         }
-         return $saida ;
-
-    
+            foreach ($this->vizinhos($origem) as $v) { //para cada vizinho
+                if(!isset($visitados[$v])){                        //que não está marcado
+                    $saida = $saida + $this->buscaProfundidade($v,$visitados);
+                }  
+            }
+        return $saida; 
+    }
 
     protected function dijkstra(){
 

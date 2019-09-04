@@ -4,7 +4,7 @@ require_once "GrafoLista.php";
 
 
 //grafo matriz
-$grafoMatriz = new GrafoMatriz(true, false);
+$grafoMatriz = new GrafoMatriz(true, true);
 $grafoMatriz->inserirVertice("A");
 $grafoMatriz->inserirVertice("B");
 $grafoMatriz->inserirVertice("C");
@@ -15,10 +15,15 @@ $grafoMatriz->inserirVertice("F");
 $grafoMatriz->inserirAresta(0, 1);
 $grafoMatriz->inserirAresta(0, 2);
 $grafoMatriz->inserirAresta(0, 3);
+$grafoMatriz->inserirAresta(3, 4);
+$grafoMatriz->inserirAresta(2, 5);
+/*$grafoMatriz->inserirAresta(0, 1);
+$grafoMatriz->inserirAresta(0, 2);
+$grafoMatriz->inserirAresta(0, 3);
 $grafoMatriz->inserirAresta(1, 3);
 $grafoMatriz->inserirAresta(2, 4);
 $grafoMatriz->inserirAresta(2, 5);
-$grafoMatriz->inserirAresta(5, 4);
+$grafoMatriz->inserirAresta(5, 4);*/
 
 print " GrafoMatriz: <br>"; 
 print_r($grafoMatriz->imprimeGrafo());
@@ -38,7 +43,7 @@ print "Ordem de visita (Busca em largura): ";
 
 foreach($grafoMatriz->retornaBuscaLargura(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
 print "<br>";
-print "<br>";
+print "Ordem de visita (Busca em profundidade): ";
 foreach($grafoMatriz->retornaBuscaProfundidade(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
 
 print "<br>";
@@ -46,7 +51,7 @@ print "<br>";
 
 //Grafo lista
 print " GrafoLista: <br>"; 
-$grafoLista = new GrafoLista(false, false);
+$grafoLista = new GrafoLista(true, true);
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");
@@ -57,10 +62,8 @@ $grafoLista->inserirVertice("F");
 $grafoLista->inserirAresta(0, 1);
 $grafoLista->inserirAresta(0, 2);
 $grafoLista->inserirAresta(0, 3);
-$grafoLista->inserirAresta(1, 3);
-$grafoLista->inserirAresta(2, 4);
+$grafoLista->inserirAresta(3, 4);
 $grafoLista->inserirAresta(2, 5);
-$grafoLista->inserirAresta(5, 4);
 
 $grafoLista->imprimeGrafo();
 print "<br>";
@@ -74,10 +77,9 @@ print " Vizinhos: ";
 foreach($grafoLista->retornarVizinhos(1) as $indice){ print $indice." ";}
 print "<br>";
 print "Ordem de visita (Busca em largura): ";
-foreach($grafoLista->retornaBuscaLargura(2) as $indice){ print $indice." ";}
+foreach($grafoLista->retornaBuscaLargura(0) as $indice){ print $grafoLista->labelVertice($indice)." ";}
 print "<br>";
-print "<br>";
-print "<br>";
+print "Ordem de visita (Busca em profundidade): ";
 foreach($grafoLista->retornaBuscaProfundidade(0) as $indice){ print $grafoLista->labelVertice($indice)." ";}
 print "<br>";
 print "<br>";

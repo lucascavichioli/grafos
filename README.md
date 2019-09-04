@@ -23,8 +23,8 @@ Dentro da classe pai:
 - [x] Não precisa ter um destino
 - [x] Retornar uma lista da ordem de visita dos vértices
 ## Busca em profundidade:
-- [ ] Não precisa ter um destino
-- [ ] Retornar uma lista da ordem de visita dos vértices
+- [x] Não precisa ter um destino
+- [x] Retornar uma lista da ordem de visita dos vértices
 ## Dijkstra:
 - [ ] Não precisa ter um destino
 - [ ] Retornar duas listas:

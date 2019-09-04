@@ -59,13 +59,15 @@ class GrafoMatriz extends Grafos{
     }
     
     public function existeAresta(int $origem, int $destino) { // : bool {
-		if($this->grafo[$origem][$destino] != 0 ){
-			if($this->ponderado){
-				return "Sim. Peso: ".$this->grafo[$origem][$destino];
-			}else{
-				return "Sim. Sem peso";
-			}
-		}
+      if($this->grafo[$origem][$destino] != 0 ){
+          if($this->ponderado){
+            return "Sim. Peso: ".$this->grafo[$origem][$destino];
+          }else{
+            return "Sim. Sem peso";
+          }
+      }else{
+        return "Não";
+      }
     }
 
     public function retornarVizinhos(int $vertice) : array{
@@ -73,11 +75,7 @@ class GrafoMatriz extends Grafos{
     }
 
     public function retornaBuscaLargura(int $origem){
-      return parent::buscaLargura($this->grafo, $origem);
-    }
-
-    public function retornaBuscaProfundidade(int $origem){
-      return parent::buscaProfundidade($this->grafo, $origem);
+      return parent::buscaLargura($origem);
     }
     
     public function retornaBuscaProfundidade(int $origem){
