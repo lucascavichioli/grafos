@@ -4,7 +4,7 @@ require_once "GrafoLista.php";
 
 
 //grafo matriz
-$grafoMatriz = new GrafoMatriz(true, true);
+$grafoMatriz = new GrafoMatriz(false, true);
 $grafoMatriz->inserirVertice("A");
 $grafoMatriz->inserirVertice("B");
 $grafoMatriz->inserirVertice("C");
@@ -15,8 +15,10 @@ $grafoMatriz->inserirVertice("F");
 $grafoMatriz->inserirAresta(0, 1);
 $grafoMatriz->inserirAresta(0, 2);
 $grafoMatriz->inserirAresta(0, 3);
-$grafoMatriz->inserirAresta(3, 4);
+$grafoMatriz->inserirAresta(1, 3);
+$grafoMatriz->inserirAresta(2, 4);
 $grafoMatriz->inserirAresta(2, 5);
+$grafoMatriz->inserirAresta(5, 4);
 /*$grafoMatriz->inserirAresta(0, 1);
 $grafoMatriz->inserirAresta(0, 2);
 $grafoMatriz->inserirAresta(0, 3);
@@ -45,7 +47,11 @@ foreach($grafoMatriz->retornaBuscaLargura(0) as $indice){ print $grafoMatriz->la
 print "<br>";
 print "Ordem de visita (Busca em profundidade): ";
 foreach($grafoMatriz->retornaBuscaProfundidade(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
-
+print "<br>";
+print "<br>";
+print "<br>";
+print_r($grafoMatriz->retornaDijkstra(0));
+print "<br>";
 print "<br>";
 print "<br>";
 
@@ -85,6 +91,3 @@ print "<br>";
 print "<br>";
 
 print_r($grafoMatriz->retornaBuscaProfundidade(0));
-
-
-
