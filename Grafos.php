@@ -82,9 +82,9 @@ abstract class Grafos {
             
             foreach($this->vizinhos($v_atual) as $v){
             
-                if( ($distancia[$v] > ($distancia[$v_atual] + $this->retornaPesoAresta($v_atual,$v)))){
+                if( ($distancia[$v] > ($distancia[$v_atual] + $this->grafo[$v_atual][$v]))){
 
-                    $distancia[$v]= $distancia[$v_atual] + $this->retornaPesoAresta($v_atual,$v);
+                    $distancia[$v]= $distancia[$v_atual] + $this->grafo[$v_atual][$v];
                     $anterior[$v]=$v_atual;
                 }
    

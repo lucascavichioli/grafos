@@ -56,7 +56,7 @@ foreach($grafoMatriz->retornaBuscaProfundidade(0) as $indice){ print $grafoMatri
 print "<br>";
 print "<br>";
 
-$tabelaDijkstra = $grafoMatriz->retornaDijkstra(0); 
+$tabelaDijkstraM = $grafoMatriz->retornaDijkstra(0); 
 
 
 
@@ -65,7 +65,7 @@ $tabelaDijkstra = $grafoMatriz->retornaDijkstra(0);
 for($linha = 0; $linha < 2 ; $linha++){ 
     if($linha == 0){
         print "&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-        for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+        for($col = 0 ; $col < count($tabelaDijkstraM[$linha]) ; $col++ ){
             print " ".$grafoMatriz->labelVertice($col);
         }    
           print "<br>";
@@ -75,16 +75,16 @@ for($linha = 0; $linha < 2 ; $linha++){
          print "Anterior ";    
     }
 
-    for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+    for($col = 0 ; $col < count($tabelaDijkstraM[$linha]) ; $col++ ){
         if($linha == 1){
-            if($tabelaDijkstra[$linha][$col] == -1){
+            if($tabelaDijkstraM[$linha][$col] == -1){
                 print "-";
             }else{
-                print  " ". $grafoMatriz->labelVertice($tabelaDijkstra[$linha][$col]);
+                print  " ". $grafoMatriz->labelVertice($tabelaDijkstraM[$linha][$col]);
             }
             
         }else{
-            print  " ". $tabelaDijkstra[$linha][$col];
+            print  " ". $tabelaDijkstraM[$linha][$col];
         }
 
     }
@@ -138,13 +138,13 @@ print "<br>";
 
 
 
-$tabelaDijkstra = $grafoMatriz->retornaDijkstra(0); 
+$tabelaDijkstra = $grafoLista->retornaDijkstra(0); 
 
 for($linha = 0; $linha < 2 ; $linha++){ 
     if($linha == 0){
         print "&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
         for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
-            print " ".$grafoMatriz->labelVertice($col);
+            print " ".$grafoLista->labelVertice($col);
         }    
           print "<br>";
           print "Distancia ";    
@@ -158,7 +158,7 @@ for($linha = 0; $linha < 2 ; $linha++){
             if($tabelaDijkstra[$linha][$col] == -1){
                 print "-";
             }else{
-                print  " ". $grafoMatriz->labelVertice($tabelaDijkstra[$linha][$col]);
+                print  " ". $grafoLista->labelVertice($tabelaDijkstra[$linha][$col]);
             }
             
         }else{

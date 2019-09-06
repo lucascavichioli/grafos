@@ -26,7 +26,7 @@ Dentro da classe pai:
 - [x] Não precisa ter um destino
 - [x] Retornar uma lista da ordem de visita dos vértices
 ## Dijkstra:
-- [ ] Não precisa ter um destino
-- [ ] Retornar duas listas:
-- [ ] Distância dos vértices para a origem
-- [ ] Vértice anterior
+- [x] Não precisa ter um destino
+- [x] Retornar duas listas:
+- [x] Distância dos vértices para a origem
+- [x] Vértice anterior
