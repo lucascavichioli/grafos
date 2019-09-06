@@ -73,15 +73,20 @@ abstract class Grafos {
 
         while($abertos[$verticeAtual] != false && $distancia[$verticeAtual] != 99999999999999999999999999999999){
             foreach ($this->vizinhos($verticeAtual) as $v) {
-                if($distancia[$v] > $verticeAtual + $this->grafo[$verticeAtual][$v]){
+                if($distancia[$v] > $distancia[$verticeAtual] + $this->grafo[$verticeAtual][$v]){
                     $distancia[$v] = $verticeAtual + $this->grafo[$verticeAtual][$v];
                     $semVerticeAnterior[$v] = $verticeAtual;   
                 }
             }
-            $abertos[$verticeAtual] = false;
-            $abertos[$i] = false;
+            $abertos[$verticeAtual] = false; // marcou como fechado
+            foreach($abertos as $a){
+                if($distancia[$a] != 99999999999999999999999999999999){
+                    $verticeAtual = min($distancia);
+                }
+            }
             //Definir o vértice aberto com a menor distância (não infinita) como o vértice atual */
-        }       
+        }
+        
 
 
        /* Inicializar todos os vértices como aberto
