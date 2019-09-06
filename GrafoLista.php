@@ -82,4 +82,9 @@ class GrafoLista extends Grafos {
 		$visitados = [];
 		return parent::buscaProfundidade($origem,$visitados);
 	  }
+
+	  
+	  public function retornaDijkstra(int $origem){
+		return parent::dijkstra($origem);
+	  }
 }

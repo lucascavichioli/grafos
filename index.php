@@ -2,7 +2,6 @@
 require_once "GrafoMatriz.php";
 require_once "GrafoLista.php";
 
-
 //grafo matriz
 $grafoMatriz = new GrafoMatriz(false, true);
 $grafoMatriz->inserirVertice("A");
@@ -10,22 +9,28 @@ $grafoMatriz->inserirVertice("B");
 $grafoMatriz->inserirVertice("C");
 $grafoMatriz->inserirVertice("D");
 $grafoMatriz->inserirVertice("E");
-$grafoMatriz->inserirVertice("F");
+// $grafoMatriz->inserirVertice("F");
+$grafoMatriz->inserirAresta(0, 1,3);
+$grafoMatriz->inserirAresta(0, 2,5);
+$grafoMatriz->inserirAresta(0, 3,6);
+$grafoMatriz->inserirAresta(0, 4,8);
+$grafoMatriz->inserirAresta(1, 3,2);
+$grafoMatriz->inserirAresta(1, 4,11);
+$grafoMatriz->inserirAresta(2, 4,2);
 
-$grafoMatriz->inserirAresta(0, 1);
-$grafoMatriz->inserirAresta(0, 2);
-$grafoMatriz->inserirAresta(0, 3);
-$grafoMatriz->inserirAresta(1, 3);
-$grafoMatriz->inserirAresta(2, 4);
-$grafoMatriz->inserirAresta(2, 5);
-$grafoMatriz->inserirAresta(5, 4);
-/*$grafoMatriz->inserirAresta(0, 1);
-$grafoMatriz->inserirAresta(0, 2);
-$grafoMatriz->inserirAresta(0, 3);
-$grafoMatriz->inserirAresta(1, 3);
-$grafoMatriz->inserirAresta(2, 4);
-$grafoMatriz->inserirAresta(2, 5);
-$grafoMatriz->inserirAresta(5, 4);*/
+
+// $grafoMatriz->inserirAresta(0, 1);
+// $grafoMatriz->inserirAresta(0, 2);
+// $grafoMatriz->inserirAresta(0, 3);
+// $grafoMatriz->inserirAresta(3, 4);
+// $grafoMatriz->inserirAresta(2, 5);
+// $grafoMatriz->inserirAresta(0, 1);
+// $grafoMatriz->inserirAresta(0, 2);
+// $grafoMatriz->inserirAresta(0, 3);
+// $grafoMatriz->inserirAresta(1, 3);
+// $grafoMatriz->inserirAresta(2, 4);
+// $grafoMatriz->inserirAresta(2, 5);
+// $grafoMatriz->inserirAresta(5, 4);
 
 print " GrafoMatriz: <br>"; 
 print_r($grafoMatriz->imprimeGrafo());
@@ -47,13 +52,44 @@ foreach($grafoMatriz->retornaBuscaLargura(0) as $indice){ print $grafoMatriz->la
 print "<br>";
 print "Ordem de visita (Busca em profundidade): ";
 foreach($grafoMatriz->retornaBuscaProfundidade(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
+
 print "<br>";
 print "<br>";
-print "<br>";
-print_r($grafoMatriz->retornaDijkstra(0));
-print "<br>";
-print "<br>";
-print "<br>";
+
+$tabelaDijkstra = $grafoMatriz->retornaDijkstra(0); 
+
+
+
+
+
+for($linha = 0; $linha < 2 ; $linha++){ 
+    if($linha == 0){
+        print "&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+        for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+            print " ".$grafoMatriz->labelVertice($col);
+        }    
+          print "<br>";
+          print "Distancia ";    
+    }
+    if($linha == 1){
+         print "Anterior ";    
+    }
+
+    for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+        if($linha == 1){
+            if($tabelaDijkstra[$linha][$col] == -1){
+                print "-";
+            }else{
+                print  " ". $grafoMatriz->labelVertice($tabelaDijkstra[$linha][$col]);
+            }
+            
+        }else{
+            print  " ". $tabelaDijkstra[$linha][$col];
+        }
+
+    }
+    print "<br>";
+}
 
 //Grafo lista
 print " GrafoLista: <br>"; 
@@ -63,13 +99,21 @@ $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");
 $grafoLista->inserirVertice("D");
 $grafoLista->inserirVertice("E");
-$grafoLista->inserirVertice("F");
+// $grafoLista->inserirVertice("F");
+;
+$grafoLista->inserirAresta(0, 1,3);
+$grafoLista->inserirAresta(0, 2,5);
+$grafoLista->inserirAresta(0, 3,6);
+$grafoLista->inserirAresta(0, 4,8);
+$grafoLista->inserirAresta(1, 3,2);
+$grafoLista->inserirAresta(1, 4,11);
+$grafoLista->inserirAresta(2, 4,2);
 
-$grafoLista->inserirAresta(0, 1);
-$grafoLista->inserirAresta(0, 2);
-$grafoLista->inserirAresta(0, 3);
-$grafoLista->inserirAresta(3, 4);
-$grafoLista->inserirAresta(2, 5);
+// $grafoLista->inserirAresta(0, 1);
+// $grafoLista->inserirAresta(0, 2);
+// $grafoLista->inserirAresta(0, 3);
+// $grafoLista->inserirAresta(3, 4);
+// $grafoLista->inserirAresta(2, 5);
 
 $grafoLista->imprimeGrafo();
 print "<br>";
@@ -90,4 +134,40 @@ foreach($grafoLista->retornaBuscaProfundidade(0) as $indice){ print $grafoLista-
 print "<br>";
 print "<br>";
 
-print_r($grafoMatriz->retornaBuscaProfundidade(0));
+// print_r($grafoMatriz->retornaBuscaProfundidade(0));
+
+
+
+$tabelaDijkstra = $grafoMatriz->retornaDijkstra(0); 
+
+for($linha = 0; $linha < 2 ; $linha++){ 
+    if($linha == 0){
+        print "&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+        for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+            print " ".$grafoMatriz->labelVertice($col);
+        }    
+          print "<br>";
+          print "Distancia ";    
+    }
+    if($linha == 1){
+         print "Anterior ";    
+    }
+
+    for($col = 0 ; $col < count($tabelaDijkstra[$linha]) ; $col++ ){
+        if($linha == 1){
+            if($tabelaDijkstra[$linha][$col] == -1){
+                print "-";
+            }else{
+                print  " ". $grafoMatriz->labelVertice($tabelaDijkstra[$linha][$col]);
+            }
+            
+        }else{
+            print  " ". $tabelaDijkstra[$linha][$col];
+        }
+
+    }
+    print "<br>";
+}
+
+
+
