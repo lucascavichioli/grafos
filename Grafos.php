@@ -25,7 +25,7 @@ abstract class Grafos {
         return $this->listaVizinhos;
     }
     
-    protected function buscaLargura(int $origem){ //removemos o parâmetro "array $grafo" .
+    protected function buscaLargura(int $origem) : array{ //removemos o parâmetro "array $grafo" .
         $saida = [];
         $fila = [];
         $visitados = [];
@@ -62,7 +62,7 @@ abstract class Grafos {
         return $saida; 
     }
 
-    protected function dijkstra(int $inicio){
+    protected function dijkstra(int $inicio) : array{
         $distancia=[];
         $anterior=[];
         $Q =[];

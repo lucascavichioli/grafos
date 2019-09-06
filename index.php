@@ -43,8 +43,8 @@ print $grafoMatriz->existeAresta(2, 0);
 //print $grafoMatriz->existeAresta(2, 0);
 //if($grafoMatriz->existeAresta(2, 0)){print "Sim";}else{print "Não";};
 print "<br>";
-print " Vizinhos: "; 
-foreach($grafoMatriz->retornarVizinhos(3) as $indice){ print $indice." ";}
+print " Vizinhos de " . $grafoMatriz->labelVertice(3) . ": "; 
+foreach($grafoMatriz->retornarVizinhos(3) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
 print "<br>";
 print "Ordem de visita (Busca em largura): ";
 
@@ -90,6 +90,10 @@ for($linha = 0; $linha < 2 ; $linha++){
     }
     print "<br>";
 }
+print "<br>";
+print "<br>";
+print "<br>";
+print "<br>";
 
 //Grafo lista
 print " GrafoLista: <br>"; 
@@ -123,8 +127,8 @@ print "<br>";
 print " Existe Aresta?: ";
 print $grafoLista->existeAresta(1, 3);
 print "<br>";
-print " Vizinhos: "; 
-foreach($grafoLista->retornarVizinhos(1) as $indice){ print $indice." ";}
+print " Vizinhos de " . $grafoLista->labelVertice(1) . ": "; 
+foreach($grafoLista->retornarVizinhos(1) as $indice){ print $grafoLista->labelVertice($indice)." ";}
 print "<br>";
 print "Ordem de visita (Busca em largura): ";
 foreach($grafoLista->retornaBuscaLargura(0) as $indice){ print $grafoLista->labelVertice($indice)." ";}

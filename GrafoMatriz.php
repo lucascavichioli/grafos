@@ -58,7 +58,7 @@ class GrafoMatriz extends Grafos{
         
     }
     
-    public function existeAresta(int $origem, int $destino) { // : bool {
+    public function existeAresta(int $origem, int $destino) : string{ // : bool {
       if($this->grafo[$origem][$destino] != 0 ){
           if($this->ponderado){
             return "Sim. Peso: ".$this->grafo[$origem][$destino];

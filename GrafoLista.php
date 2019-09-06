@@ -23,9 +23,9 @@ class GrafoLista extends Grafos {
 			print " ".$this->nomeVertices[$linha].": ";
 			foreach($this->grafo[$linha] as $indices => $valor){
 				if($this->ponderado){
-					print $indices . ":" . $valor . " ";
+					print $this->labelVertice($indices) . ":" . $valor . " ";
 				}else{
-					print $indices;
+					print $this->labelVertice($indices);
 				}
 				
 			}
@@ -55,7 +55,7 @@ class GrafoLista extends Grafos {
 		}
     }
     
-	public function existeAresta(int $origem, int $destino) { //: bool {
+	public function existeAresta(int $origem, int $destino) : string { //: bool {
         if(empty($this->grafo[$origem][$destino])){
 			return "Não. Sem Peso";
 		}else{
