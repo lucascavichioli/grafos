@@ -67,31 +67,62 @@ abstract class Grafos {
         $Q =[];
 
         for( $i= 0; $i < count($this->nomeVertices);$i++ ) {
-             $distancia[]= INF;
-            $anterior[]=-1;
-            $Q[]= $i; 
+            $distancia[]= INF; // distancia infinita
+            $anterior[]=-1; // sem vertice anterior
+            $Q[]= INF; //todos abertos
         } 
-
         $v_atual = $inicio;
         $distancia[$v_atual]=0;
+        
 
         while(!empty($Q)){
-                        
-            foreach($this->vizinhos($v_atual) as $v){
             
+            $v_atual = array_search(min($Q),$Q);
+            
+            foreach($this->vizinhos($v_atual) as $v){
+                
                 if( ($distancia[$v] > ($distancia[$v_atual] + $this->grafo[$v_atual][$v]))){
-
+                    
                     $distancia[$v]= $distancia[$v_atual] + $this->grafo[$v_atual][$v];
                     $anterior[$v]=$v_atual;
+                    $Q[$v]  = $distancia[$v_atual] + $this->grafo[$v_atual][$v];
+                    
                 }
    
             }
-            $v_atual = array_search(min($Q),$Q);
+            
+                    
             unset($Q[$v_atual]);
+            
 
          }
 
         return [$distancia ,$anterior];
     }
         
-    }
+}
+
+
+/* Inicializar todos os vértices como aberto
+
+Inicializar todos os vértices como sem vértice anterior
+
+Inicializar todos os vértices como distância infinita
+
+Definir o vértice inicial como vértice atual
+
+Definir a distância do vértice atual como zero
+
+    Enquanto existir algum vértice aberto com distância não infinita
+
+        Para cada vizinhos do vértices atual
+
+            Se a distância do vizinho é maior que a distância do vértice atual mais o peso da aresta que os une
+
+                Atribuir esta nova distância ao vizinho
+
+                Definir como vértice anterior deste vizinho o vértice atual
+
+Marcar o vértice atual como fechado
+
+Definir o vértice aberto com a menor distância (não infinita) como o vértice atual */

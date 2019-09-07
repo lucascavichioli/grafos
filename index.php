@@ -56,7 +56,7 @@ foreach($grafoMatriz->retornaBuscaProfundidade(2) as $indice){ print $grafoMatri
 print "<br>";
 print "<br>";
 
-$tabelaDijkstraM = $grafoMatriz->retornaDijkstra(0); 
+$tabelaDijkstraM = $grafoMatriz->retornaDijkstra(4); 
 
 
 
@@ -142,7 +142,7 @@ print "<br>";
 
 
 
-$tabelaDijkstra = $grafoLista->retornaDijkstra(0); 
+$tabelaDijkstra = $grafoLista->retornaDijkstra(4); 
 
 for($linha = 0; $linha < 2 ; $linha++){ 
     if($linha == 0){
