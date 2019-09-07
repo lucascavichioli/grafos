@@ -48,10 +48,10 @@ foreach($grafoMatriz->retornarVizinhos(3) as $indice){ print $grafoMatriz->label
 print "<br>";
 print "Ordem de visita (Busca em largura): ";
 
-foreach($grafoMatriz->retornaBuscaLargura(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
+foreach($grafoMatriz->retornaBuscaLargura(2) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
 print "<br>";
 print "Ordem de visita (Busca em profundidade): ";
-foreach($grafoMatriz->retornaBuscaProfundidade(0) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
+foreach($grafoMatriz->retornaBuscaProfundidade(2) as $indice){ print $grafoMatriz->labelVertice($indice)." ";}
 
 print "<br>";
 print "<br>";
@@ -97,7 +97,7 @@ print "<br>";
 
 //Grafo lista
 print " GrafoLista: <br>"; 
-$grafoLista = new GrafoLista(true, true);
+$grafoLista = new GrafoLista(false, true);
 $grafoLista->inserirVertice("A");
 $grafoLista->inserirVertice("B");
 $grafoLista->inserirVertice("C");

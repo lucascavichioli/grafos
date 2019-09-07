@@ -50,9 +50,8 @@ abstract class Grafos {
     }
 
 
-    protected function buscaProfundidade( int $origem ,array $visitados) : array{
+    protected function buscaProfundidade(int $origem ,array $visitados) : array{
         $visitados[$origem] = true;
-        //$tempo = $tempo + 1;
         $saida[$origem] = $origem;
             foreach ($this->vizinhos($origem) as $v) { //para cada vizinho
                 if(!isset($visitados[$v])){                        //que não está marcado
@@ -77,9 +76,7 @@ abstract class Grafos {
         $distancia[$v_atual]=0;
 
         while(!empty($Q)){
-            $v_atual = array_search(min($Q),$Q);
-            unset($Q[$v_atual]);
-            
+                        
             foreach($this->vizinhos($v_atual) as $v){
             
                 if( ($distancia[$v] > ($distancia[$v_atual] + $this->grafo[$v_atual][$v]))){
@@ -89,6 +86,8 @@ abstract class Grafos {
                 }
    
             }
+            $v_atual = array_search(min($Q),$Q);
+            unset($Q[$v_atual]);
 
          }
 
