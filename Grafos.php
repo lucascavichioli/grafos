@@ -100,29 +100,146 @@ abstract class Grafos {
         return [$distancia ,$anterior];
     }
         
+    protected function welshEPowell() : array {
+        $grau ;
+        $corVertice ;
+        $corAtual= 1;
+        $corIgual= false;
+       
+
+        foreach ( $this->nomeVertices  as  $chave => $v ){
+            $grau[$chave] =  count($this->vizinhos($chave));
+            
+        }
+        arsort($grau);
+        $Q = $grau;
+        foreach($Q as  $chave => $v  ){
+           $corVertice[$chave] = 0;
+        }
+        $corVertice[array_search(max($Q),$Q)]  = $corAtual;
+        while(!empty($Q)){
+            $corIgual= false;
+        
+            foreach($Q as $chave => $ver){
+
+                foreach($this->vizinhos($chave) as  $v){
+                        if( $corVertice[$v] == $corAtual ){
+                              $corIgual = true;
+                        }
+                }
+                if(!$corIgual){
+                   $corVertice[$chave] =  $corAtual;   
+                   
+                } 
+            }   
+            foreach($this->nomeVertices as $chave => $ver){
+                if($corVertice[$chave] != 0){
+                    unset($Q[$chave]);   
+                }
+            }
+            $corAtual++;
+        }
+
+        return [$grau,$corVertice];
+    }
+
+
+
+    protected function atulizaSaturacao (  $corVertices) : array{
+        $satura;
+        // $anterior = $corVertices[$indiceVertice]
+        foreach($corVertices as $chave => $v){
+           $anterior =  $corVertices[ $chave];
+           $satura[$chave] =  0;
+            foreach($this->vizinhos( $chave) as $v2){
+                if($anterior != $corVertices[$v2] ){
+                   
+                    $satura[$chave] = $satura[$chave] + 1;   
+                   }
+                   $anterior = $corVertices[$v2];
+                //    print "<br>".$anterior;
+            } 
+        }
+        
+        
+
+        return $satura;
+    }
+
+
+    protected function retornaProxVertice ( $Q , $Q2 ) : int{
+
+        
+        $aux;
+        $qtdSatur=array_count_values($Q2);
+        $maximo = array_search(max($Q2),$Q2); 
+        if($qtdSatur[max(array_keys($qtdSatur))]  = 1  ){
+           
+            return  $maximo;
+        }else{
+           
+            unset($Q2[$maximo]);
+            foreach($Q2 as $chave=>  $v){
+                if($v = $maximo){
+                    $aux[$chave]  = $Q[$chave];
+                }
+                
+            }
+
+            return array_search(max($aux),$aux);
+        }
+
+    }
+
+    protected function dsatur() : array {
+        $grau;
+        $saturacao;
+        $corVertice;
+        $verticeAtual;
+        $corIgual = false;
+        $corAtual = 1; 
+        $grauXSaturacao;
+        
+        foreach ( $this->nomeVertices  as  $chave => $v ){
+            $grau[$chave] =  count($this->vizinhos($chave));
+            
+        }
+        arsort($grau);
+        $Q = $grau;
+       
+        foreach($Q as  $chave => $v  ){
+
+           $corVertice[$chave] = 0;
+           $saturacao[$chave] = 0;
+        }
+        $Q2 = $saturacao;
+         $corVertice[$this->retornaProxVertice($Q,$Q2)]  = $corAtual;
+
+        while(!empty($Q)){
+            $corIgual= false;
+            
+            $verticeAtual= $this->retornaProxVertice($Q,$Q2);
+           
+                foreach($this->vizinhos($verticeAtual) as  $v){
+                        if( $corVertice[$v] == $corAtual ){
+                            // print "tchau";
+                              $corIgual = true;
+                        }
+                }
+                if(!$corIgual){
+                   $corVertice[$verticeAtual] =  $corAtual;   
+                    unset($Q[$verticeAtual]);
+                    unset($Q2[$verticeAtual]);
+                }else{
+                    $corAtual++;
+                } 
+                $saturacao = $this->atulizaSaturacao($corVertice);
+
+            }
+
+        return [$grau, $saturacao, $corVertice];
+    }
+
+   
 }
 
-
-/* Inicializar todos os vértices como aberto
-
-Inicializar todos os vértices como sem vértice anterior
-
-Inicializar todos os vértices como distância infinita
-
-Definir o vértice inicial como vértice atual
-
-Definir a distância do vértice atual como zero
-
-    Enquanto existir algum vértice aberto com distância não infinita
-
-        Para cada vizinhos do vértices atual
-
-            Se a distância do vizinho é maior que a distância do vértice atual mais o peso da aresta que os une
-
-                Atribuir esta nova distância ao vizinho
-
-                Definir como vértice anterior deste vizinho o vértice atual
-
-Marcar o vértice atual como fechado
-
-Definir o vértice aberto com a menor distância (não infinita) como o vértice atual */
