@@ -112,11 +112,13 @@ abstract class Grafos {
             
         }
         arsort($grau);
+        
         $Q = $grau;
         foreach($Q as  $chave => $v  ){
            $corVertice[$chave] = 0;
         }
-        $corVertice[array_search(max($Q),$Q)]  = $corAtual;
+       
+//       $corVertice[array_search(max($Q),$Q)]  = $corAtual;
         while(!empty($Q)){
             $corIgual= false;
         
@@ -128,16 +130,17 @@ abstract class Grafos {
                         }
                 }
                 if(!$corIgual){
-                   $corVertice[$chave] =  $corAtual;   
-                   
-                } 
-            }   
+                   $corVertice[$chave] =  $corAtual;  
+                    
+                }
+            }
+            
             foreach($this->nomeVertices as $chave => $ver){
                 if($corVertice[$chave] != 0){
                     unset($Q[$chave]);   
                 }
             }
-            $corAtual++;
+            $corAtual++; 
         }
 
         return [$grau,$corVertice];
@@ -154,7 +157,7 @@ abstract class Grafos {
             foreach($this->vizinhos( $chave) as $v2){
                 if($anterior != $corVertices[$v2] ){
                    
-                    $satura[$chave] = $satura[$chave] + 1;   
+                    $satura[$chave]  = $satura[$chave] + 1 ;  
                    }
                    $anterior = $corVertices[$v2];
                 //    print "<br>".$anterior;

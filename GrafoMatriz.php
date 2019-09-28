@@ -3,28 +3,26 @@ require_once "Grafos.php";
 
 class GrafoMatriz extends Grafos{
 
-  function __construct(bool $ehdirecionado, bool $ehponderado){
-    parent::__construct($ehdirecionado, $ehponderado);
-  }
+ 
 
   
   function __construct(string $nomeArquivo){
 		$arq = file($nomeArquivo);
 		$parametros = explode(" ",$arq[0]);
-		 parent::__construct((int)$arq[2],(int)$arq[3]);
+		 parent::__construct((int)$parametros[2],(int)$parametros[3]);
 		 
 		 for($i = 1 ; $i <= ((int)$parametros[0]); $i++){
 		   $this->inserirVertice($arq[$i]);
 		 }
 		 $aresta;
 		 for($i = ((int)$parametros[0])+1 ; $i < ((int)$parametros[0]+1)+((int) $parametros[1]); $i++){
-       $aresta = explode(" ",$arq[$i]);
+            $aresta = explode(" ",$arq[$i]);
     
 		   if( ((int)$parametros[3]) === 1 ){
 			   $this->inserirAresta( (int) $aresta[0],(int) $aresta[1],(int) $aresta[2]);
 		   }else{
        
-        $this->inserirAresta( (int) $aresta[0],(int) $aresta[1]);   
+            $this->inserirAresta( (int) $aresta[0],(int) $aresta[1]);   
 		   }
 		 }
  

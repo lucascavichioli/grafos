@@ -4,14 +4,10 @@ require_once "Grafos.php";
 class GrafoLista extends Grafos {
 	
 	
-	function __construct(bool $ehdirecionado, bool $ehponderado){
-        parent::__construct($ehdirecionado, $ehponderado);
-    }
-
 	function __construct(string $nomeArquivo){
 		$arq = file($nomeArquivo);
 		$parametros = explode(" ",$arq[0]);
-		 parent::__construct((int)$arq[2],(int)$arq[3]);
+		 parent::__construct((int)$parametros[2],(int)$parametros[3]);
 		 
 		 for($i = 1 ; $i <= ((int)$parametros[0]); $i++){
 		   $this->inserirVertice($arq[$i]);
