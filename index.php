@@ -175,66 +175,78 @@ require_once "GrafoLista.php";
 
 
 $grafo = new GrafoMatriz("gb4.txt");
-//  $grafo->imprimeGrafo();
-
-//$tabelaCor = $grafo->retornaDsatur(); 
-$tabelaCor = $grafo->retornaWelshEPowell(); 
+// $tipoColaraco ="wp";
+// $tipoColaraco ="ds";
 
 
-////esse é para imprimir welsh e powell
- foreach($tabelaCor as $chave => $i){
-     if($chave == 0){
-         print " &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-         foreach($tabelaCor[$chave] as $chave2 => $j ){
-             print " ".$grafo->labelVertice($chave2)."";
-         }    
-         print "<br>";
-         print "Grau ";    
-     }
-     if($chave == 1){
-         print "Cor ";    
+if($tipoColaraco == "wp"){
+    $tabelaCor = $grafo->retornaWelshEPowell();  
+    ////esse é para imprimir welsh e powell
+    foreach($tabelaCor as $chave => $i){
+        if($chave == 0){
+            print " &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+            foreach($tabelaCor[$chave] as $chave2 => $j ){
+                print " ".$grafo->labelVertice($chave2)."";
+            }    
+            print "<br>";
+            print "Grau ";    
+        }
+        if($chave == 1){
+            print "Cor ";    
+        }
+
+        foreach($tabelaCor[$chave] as $j ){
+            print  " (". $j.")";
+        }
+        print "<br>";
     }
+        
+    print "<br>";
+    // só pra testar qual é o numero maximo de cores obtido Welsh e Powell
+    print max($tabelaCor[1]);
 
-     foreach($tabelaCor[$chave] as $j ){
-         print  " (". $j.")";
-     }
-     print "<br>";
- }
+}else if($tipoColaraco == "ds"){
+
+    $tabelaCor = $grafo->retornaDsatur(); 
+        //esse é para imprimir o desatur
+        foreach($tabelaCor as $chave => $i){
+            if($chave == 0){
+                print " &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                foreach($tabelaCor[$chave] as $chave2 => $j ){
+                    print " ".$grafo->labelVertice($chave2)."";
+                }    
+                print "<br>";
+                print "Grau ";    
+            }
+            if($chave == 1){
+                print "Saturação "; 
+            }
+            if($chave == 2){
+                print "Cor ";    
+        }
+        
+            foreach($tabelaCor[$chave] as $j ){
+                print  " (". $j.")";
+            }
+            print "<br>";
+        }
+        
+        
+
+        print "<br>";
+        // só pra testar qual é o numero maximo de cores obtido Dsatur
+        print max($tabelaCor[2]);
+        
+}
 
 
 
-//esse é para imprimir o desatur
-//foreach($tabelaCor as $chave => $i){
-//    if($chave == 0){
-//        print " &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-//        foreach($tabelaCor[$chave] as $chave2 => $j ){
-//            print " ".$grafo->labelVertice($chave2)."";
-//        }    
-//        print "<br>";
-//        print "Grau ";    
-//    }
-//    if($chave == 1){
-//        print "Saturação "; 
-//    }
-//    if($chave == 2){
-//        print "Cor ";    
-//   }
-//
-//    foreach($tabelaCor[$chave] as $j ){
-//        print  " (". $j.")";
-//    }
-//    print "<br>";
-//}
-//
-//
 
 
-print "<br>";
-// só pra testar qual é o numero maximo de cores obtido Dsatur
-//print max($tabelaCor[2]);
 
-// só pra testar qual é o numero maximo de cores obtido Welsh e Powell
-print max($tabelaCor[1]);
+
+
+
 
 
 

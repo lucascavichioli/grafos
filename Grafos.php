@@ -112,29 +112,26 @@ abstract class Grafos {
             
         }
         arsort($grau);
-        
-        $Q = $grau;
-        foreach($Q as  $chave => $v  ){
+        foreach($grau as  $chave => $v  ){
            $corVertice[$chave] = 0;
         }
-       
-//       $corVertice[array_search(max($Q),$Q)]  = $corAtual;
+        $Q = $corVertice;
         while(!empty($Q)){
-            $corIgual= false;
+            
         
             foreach($Q as $chave => $ver){
-
+                $corIgual = false;
                 foreach($this->vizinhos($chave) as  $v){
                         if( $corVertice[$v] == $corAtual ){
                               $corIgual = true;
                         }
                 }
-                if(!$corIgual){
+                if(! $corIgual  ){
                    $corVertice[$chave] =  $corAtual;  
                     
                 }
+                
             }
-            
             foreach($this->nomeVertices as $chave => $ver){
                 if($corVertice[$chave] != 0){
                     unset($Q[$chave]);   
@@ -146,20 +143,17 @@ abstract class Grafos {
         return [$grau,$corVertice];
     }
 
-
-
     protected function atulizaSaturacao (  $corVertices) : array{
         $satura;
-        // $anterior = $corVertices[$indiceVertice]
         foreach($corVertices as $chave => $v){
-           $anterior =  $corVertices[ $chave];
+           $anterior = 0;//$corVertices[ $chave];
            $satura[$chave] =  0;
             foreach($this->vizinhos( $chave) as $v2){
                 if($anterior != $corVertices[$v2] ){
-                   
-                    $satura[$chave]  = $satura[$chave] + 1 ;  
+                    $satura[$chave]++; 
+                    $anterior = $corVertices[$v2];
                    }
-                   $anterior = $corVertices[$v2];
+                   
                 //    print "<br>".$anterior;
             } 
         }
@@ -170,28 +164,21 @@ abstract class Grafos {
     }
 
 
-    protected function retornaProxVertice ( $Q , $Q2 ) : int{
+    protected function retornaProxVertice ( $grau , $saturacao , $Q ) : int{
 
-        
         $aux;
-        $qtdSatur=array_count_values($Q2);
-        $maximo = array_search(max($Q2),$Q2); 
-        if($qtdSatur[max(array_keys($qtdSatur))]  = 1  ){
-           
+        $qtdSatur=array_count_values($saturacao);
+        $maximo = array_search(max($saturacao),$saturacao); 
+        if($qtdSatur[max(array_keys($qtdSatur))]  <= 1 ){
             return  $maximo;
-        }else{
-           
-            unset($Q2[$maximo]);
-            foreach($Q2 as $chave=>  $v){
-                if($v = $maximo){
-                    $aux[$chave]  = $Q[$chave];
+        }else{ 
+            foreach($Q as $chave =>  $v){
+                if($chave == $maximo){
+                    $aux[$chave]  = $grau[$chave];    
                 }
-                
             }
-
             return array_search(max($aux),$aux);
         }
-
     }
 
     protected function dsatur() : array {
@@ -201,48 +188,50 @@ abstract class Grafos {
         $verticeAtual;
         $corIgual = false;
         $corAtual = 1; 
-        $grauXSaturacao;
-        
         foreach ( $this->nomeVertices  as  $chave => $v ){
-            $grau[$chave] =  count($this->vizinhos($chave));
-            
+            $grau[$chave] =  count($this->vizinhos($chave));          
         }
         arsort($grau);
         $Q = $grau;
-       
         foreach($Q as  $chave => $v  ){
 
            $corVertice[$chave] = 0;
            $saturacao[$chave] = 0;
         }
-        $Q2 = $saturacao;
-         $corVertice[$this->retornaProxVertice($Q,$Q2)]  = $corAtual;
-
+         $Q = $corVertice;  
+         $QG =  $grau;
+         $QS;
+         $cont ;
         while(!empty($Q)){
-            $corIgual= false;
-            
-            $verticeAtual= $this->retornaProxVertice($Q,$Q2);
-           
-                foreach($this->vizinhos($verticeAtual) as  $v){
-                        if( $corVertice[$v] == $corAtual ){
-                            // print "tchau";
-                              $corIgual = true;
+
+                    $corIgual= false;
+                    $QS = $saturacao;
+                    foreach($this->nomeVertices as $chave => $ver){
+                        if($corVertice[$chave] != 0){
+                            unset($QS[$chave]);  
+                            unset($QG[$chave]);   
                         }
-                }
-                if(!$corIgual){
-                   $corVertice[$verticeAtual] =  $corAtual;   
-                    unset($Q[$verticeAtual]);
-                    unset($Q2[$verticeAtual]);
-                }else{
-                    $corAtual++;
-                } 
-                $saturacao = $this->atulizaSaturacao($corVertice);
-
-            }
-
+                    }
+                    $verticeAtual = $this->retornaProxVertice($QG,$QS,$Q);
+                    foreach($this->vizinhos($verticeAtual) as  $v){
+                      
+                            if( $corVertice[$v] == $corAtual ){
+                                
+                                $corIgual = true;
+                            }
+                          
+                    }
+                    if(!$corIgual){
+                        $corVertice[$verticeAtual] =  $corAtual;   
+                        $saturacao = $this->atulizaSaturacao($corVertice);
+                        unset($Q[$verticeAtual]);
+                        $corAtual = 1;
+                    }else {
+                        $corAtual++;       
+                    }      
+        }
         return [$grau, $saturacao, $corVertice];
     }
 
-   
 }
-
+   
