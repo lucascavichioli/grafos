@@ -174,13 +174,27 @@ require_once "GrafoLista.php";
 // }
 
 
-$grafo = new GrafoMatriz("gb4.txt");
-// $tipoColaraco ="wp";
-// $tipoColaraco ="ds";
+$grafo = new GrafoLista("trabalho-28cores.txt");
+ $tipoColaraco ="wp";
+ //$tipoColaraco ="ds";
 
 
 if($tipoColaraco == "wp"){
+    // Armazena o timestamp antes da execucao do script
+$tm_inicio = microtime( true ); 
+
     $tabelaCor = $grafo->retornaWelshEPowell();  
+// Armazena  o timestamp apos a execucao do script
+$tm_fim = microtime( true );
+
+// Calcula o tempo de execucao do script 
+$segundos = $tm_fim - $tm_inicio;
+$minutos = floor(($segundos / 60) % 60);
+
+// Exibe o tempo de execucao do script em segundos
+echo '<b>Tempo de Execucao:</b> '.$segundos.' Segundos </br>';
+echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
+    
     ////esse é para imprimir welsh e powell
     foreach($tabelaCor as $chave => $i){
         if($chave == 0){
@@ -200,14 +214,25 @@ if($tipoColaraco == "wp"){
         }
         print "<br>";
     }
-        
+       
     print "<br>";
     // só pra testar qual é o numero maximo de cores obtido Welsh e Powell
     print max($tabelaCor[1]);
 
 }else if($tipoColaraco == "ds"){
 
-    $tabelaCor = $grafo->retornaDsatur(); 
+$tm_inicio = microtime( true ); 
+    
+    $tabelaCor = $grafo->retornaDsatur();
+    
+$tm_fim = microtime( true );
+
+// Calcula o tempo de execucao do script 
+$segundos = $tm_fim - $tm_inicio;
+$minutos = floor(($segundos / 60) % 60);
+// Exibe o tempo de execucao do script em segundos
+echo '<b>Tempo de Execucao:</b> '.$segundos.' Segundos </br>';
+echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         //esse é para imprimir o desatur
         foreach($tabelaCor as $chave => $i){
             if($chave == 0){
