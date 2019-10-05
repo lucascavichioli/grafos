@@ -145,18 +145,21 @@ abstract class Grafos {
 
     protected function atulizaSaturacao (  $corVertices) : array{
         $satura;
+        $cores = [];
         foreach($corVertices as $chave => $v){
-           $anterior = 0;//$corVertices[ $chave];
+           $cores = [];//$corVertices[ $chave];
            $satura[$chave] =  0;
             foreach($this->vizinhos( $chave) as $v2){
-                if($anterior != $corVertices[$v2] ){
+                if($corVertices[$v2] != 0 && !in_array($corVertices[$v2], $cores)  ){
                     $satura[$chave]++; 
-                    $anterior = $corVertices[$v2];
+                    $cores[] = $corVertices[$v2];
                    }
                    
                 //    print "<br>".$anterior;
             } 
         }
+        
+        // se diferente 0 e não conter no vetor de cores
         
         
 
@@ -201,7 +204,7 @@ abstract class Grafos {
          $Q = $corVertice;  
          $QG =  $grau;
          $QS;
-         $cont ;
+         $cont;
         while(!empty($Q)){
 
                     $corIgual= false;

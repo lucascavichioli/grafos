@@ -173,10 +173,9 @@ require_once "GrafoLista.php";
 //     print "<br>";
 // }
 
-
 $grafo = new GrafoLista("trabalho-28cores.txt");
- $tipoColaraco ="wp";
- //$tipoColaraco ="ds";
+$tipoColaraco ="wp";
+//$tipoColaraco ="ds";
 
 
 if($tipoColaraco == "wp"){
@@ -189,7 +188,7 @@ $tm_fim = microtime( true );
 
 // Calcula o tempo de execucao do script 
 $segundos = $tm_fim - $tm_inicio;
-$minutos = floor(($segundos / 60) % 60);
+$minutos = ($segundos / 60) % 60;
 
 // Exibe o tempo de execucao do script em segundos
 echo '<b>Tempo de Execucao:</b> '.$segundos.' Segundos </br>';
@@ -229,7 +228,7 @@ $tm_fim = microtime( true );
 
 // Calcula o tempo de execucao do script 
 $segundos = $tm_fim - $tm_inicio;
-$minutos = floor(($segundos / 60) % 60);
+$minutos = ($segundos / 60) % 60;
 // Exibe o tempo de execucao do script em segundos
 echo '<b>Tempo de Execucao:</b> '.$segundos.' Segundos </br>';
 echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
