@@ -235,6 +235,47 @@ abstract class Grafos {
         }
         return [$grau, $saturacao, $corVertice];
     }
+    
+    
+    protected function prim(){
+        $S = [];
+        $Q = [] ;
+        $arestas = [] ; 
+        $ori = [];
+        $dest = [];
+        $indiceMin;
+        $valArvore = 0;
+        foreach($this->nomeVertices as $chave =>  $v){
+            $Q[$chave] = $chave;    
+        }
+        
+        unset($Q[0]);
+        while(!empty($Q)){
+            $aresta = [];
+            $ori = [];
+            $dest = []; 
+           
+            foreach($Q as  $u){
+                foreach($this->vizinhos($u) as  $v){
+                    if(in_array($u,$Q) && !in_array($v,$Q) ){
+                        $aresta[] = $this->grafo[$u][$v];
+                        $ori[] = $u;
+                        $dest[] =$v;
+                    }else if(!in_array($u,$Q) && in_array($v,$Q) ){
+                            $aresta[] = $this->grafo[$u][$v];
+                            $ori[] = $u;
+                            $dest[] =$v;
+                    }
+                    
+               }
+            }
+          $indiceMin = array_search(min($aresta),$aresta);
+        $valArvore = $valArvore + $aresta[$indiceMin]; 
+            $S[] = [$ori[$indiceMin],$dest[$indiceMin]];
+            unset($Q[$indiceMin]);
+        }
+        return [$S,$valArvore];
+    }
 
 }
    

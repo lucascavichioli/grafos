@@ -117,4 +117,8 @@ class GrafoMatriz extends Grafos{
     public function retornaDsatur(){
       return parent :: dsatur();
     }
+    
+    public function retornaPrim(){
+        return parent :: prim();
+    }
 }

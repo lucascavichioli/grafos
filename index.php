@@ -172,7 +172,7 @@ require_once "GrafoLista.php";
 //     }
 //     print "<br>";
 // }
-
+/*
 $grafo = new GrafoLista("trabalho-28cores.txt");
 $tipoColaraco ="wp";
 //$tipoColaraco ="ds";
@@ -260,8 +260,17 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         print "<br>";
         // só pra testar qual é o numero maximo de cores obtido Dsatur
         print max($tabelaCor[2]);
-        
-}
+        */
+
+$grafo = new GrafoMatriz("50vertices25%Arestas.txt");
+
+$tabelaResp = $grafo->retornaPrim();
+
+print "<pre>";
+print_r($tabelaRes);
+print "</pre>";
+
+
 
 
 

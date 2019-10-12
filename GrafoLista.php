@@ -117,4 +117,8 @@ class GrafoLista extends Grafos {
 	  public function retornaDsatur(){
 		return parent :: dsatur();
 	  }
+    
+     public function retornaPrim(){
+        return parent :: prim();
+    }
 }
