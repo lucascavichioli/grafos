@@ -267,7 +267,7 @@ $grafo = new GrafoMatriz("50vertices25%Arestas.txt");
 $tabelaResp = $grafo->retornaPrim();
 
 print "<pre>";
-print_r($tabelaRes);
+print_r($tabelaResp);
 print "</pre>";
 
 

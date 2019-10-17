@@ -238,25 +238,31 @@ abstract class Grafos {
     
     
     protected function prim(){
+        //inicia um conjunto S vazio de arestas para a solução
         $S = [];
+        
+        //inicia um conjunto Q com todos os vértices do grafo para o controle
         $Q = [] ;
-        $arestas = [] ; 
-        $ori = [];
-        $dest = [];
-        $indiceMin;
-        $valArvore = 0;
         foreach($this->nomeVertices as $chave =>  $v){
             $Q[$chave] = $chave;    
         }
+
+        //Escolhe um vértice arbitrário A do grafo como vértice inicial
+        $chaveDoVerticeArbitrario = array_rand($this->grafo);
         
-        unset($Q[0]);
-        while(!empty($Q)){
-            $aresta = [];
-            $ori = [];
-            $dest = []; 
-           
-            foreach($Q as  $u){
-                foreach($this->vizinhos($u) as  $v){
+        //remove vertice arbitrário do conjunto Q
+        unset($Q[$chaveDoVerticeArbitrario]);
+        
+        //Enquanto Q não estiver vazio
+        while(!empty($Q)){ 
+
+                foreach($this->vizinhos($chaveDoVerticeArbitrario) as $v){
+                    
+
+                    //parei aqui, vou continuar.
+
+
+
                     if(in_array($u,$Q) && !in_array($v,$Q) ){
                         $aresta[] = $this->grafo[$u][$v];
                         $ori[] = $u;
@@ -268,7 +274,7 @@ abstract class Grafos {
                     }
                     
                }
-            }
+
           $indiceMin = array_search(min($aresta),$aresta);
         $valArvore = $valArvore + $aresta[$indiceMin]; 
             $S[] = [$ori[$indiceMin],$dest[$indiceMin]];
