@@ -240,45 +240,55 @@ abstract class Grafos {
     protected function prim(){
         //inicia um conjunto S vazio de arestas para a solução
         $S = [];
-        
+        $valArvore = 0;
+        $aresta ;
+        $ori;
+        $dest;
         //inicia um conjunto Q com todos os vértices do grafo para o controle
         $Q = [] ;
         foreach($this->nomeVertices as $chave =>  $v){
             $Q[$chave] = $chave;    
         }
-
-        //Escolhe um vértice arbitrário A do grafo como vértice inicial
-        $chaveDoVerticeArbitrario = array_rand($this->grafo);
         
         //remove vertice arbitrário do conjunto Q
-        unset($Q[$chaveDoVerticeArbitrario]);
+        unset($Q[0]);
         
         //Enquanto Q não estiver vazio
         while(!empty($Q)){ 
-
-                foreach($this->vizinhos($chaveDoVerticeArbitrario) as $v){
+            $aresta = [];
+                $ori =[];
+                $dest =[];
+            foreach($this->nomeVertices as  $chave => $u){
+                // print "<pre>";
+                // print_r($this->grafo );
+                // print "</pre>";
+                
+                foreach($this->vizinhos($chave) as $v){
                     
-
-                    //parei aqui, vou continuar.
-
-
-
-                    if(in_array($u,$Q) && !in_array($v,$Q) ){
-                        $aresta[] = $this->grafo[$u][$v];
-                        $ori[] = $u;
-                        $dest[] =$v;
-                    }else if(!in_array($u,$Q) && in_array($v,$Q) ){
-                            $aresta[] = $this->grafo[$u][$v];
-                            $ori[] = $u;
-                            $dest[] =$v;
-                    }
-                    
+                    if((in_array($chave,$Q) && !in_array($v,$Q)) || (!in_array($chave,$Q) && in_array($v,$Q)) ){
+                       
+                        $aresta[] = $this->grafo[$chave][$v];
+                        $ori[] = $chave;
+                        $dest[] = $v;
+                        // print "<pre> ".$chave;
+                        // print_r($aresta);
+                        // print "</pre>";
+                    }   
                }
 
-          $indiceMin = array_search(min($aresta),$aresta);
-        $valArvore = $valArvore + $aresta[$indiceMin]; 
+            //    print"<br>";
+            }   
+
+            $indiceMin = array_search(min($aresta),$aresta);
+            print "<pre>";
+            print_r($indiceMin);
+            print "</pre>";
+            $valArvore = $valArvore + $aresta[$indiceMin]; 
             $S[] = [$ori[$indiceMin],$dest[$indiceMin]];
-            unset($Q[$indiceMin]);
+            print "<pre>";
+            print_r($aresta);
+            print "</pre>";
+            unset($Q[$dest[$indiceMin]]);
         }
         return [$S,$valArvore];
     }

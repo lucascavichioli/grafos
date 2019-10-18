@@ -262,7 +262,7 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         print max($tabelaCor[2]);
         */
 
-$grafo = new GrafoMatriz("50vertices25%Arestas.txt");
+$grafo = new GrafoMatriz("testeSlidePrim.txt");
 
 $tabelaResp = $grafo->retornaPrim();
 
