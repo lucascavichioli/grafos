@@ -244,6 +244,11 @@ abstract class Grafos {
         $aresta ;
         $ori;
         $dest;
+        //serve so pra fcilitar o teste para saber se os dois já estão na arvore 
+        $vEmQ = false;
+        $uEmQ = false;
+        //serve para armazenar os vertices que saem de Q
+        $foraDeQ;
         //inicia um conjunto Q com todos os vértices do grafo para o controle
         $Q = [] ;
         foreach($this->nomeVertices as $chave =>  $v){
@@ -251,45 +256,54 @@ abstract class Grafos {
         }
         
         //remove vertice arbitrário do conjunto Q
+        //arbitrario quer dizer pre definido
+        $foraDeQ[0]= $Q[0]; 
         unset($Q[0]);
+        
         
         //Enquanto Q não estiver vazio
         while(!empty($Q)){ 
             $aresta = [];
                 $ori =[];
                 $dest =[];
-            foreach($this->nomeVertices as  $chave => $u){
-                // print "<pre>";
-                // print_r($this->grafo );
-                // print "</pre>";
+            //faz a interação em cima dos vertices que já sairam de que 
+            foreach($foraDeQ as  $chave => $u){
                 
+                $uEmQ = in_array($chave,$Q);
                 foreach($this->vizinhos($chave) as $v){
+                    $vEmQ = in_array($v,$Q);
                     
-                    if((in_array($chave,$Q) && !in_array($v,$Q)) || (!in_array($chave,$Q) && in_array($v,$Q)) ){
+                    //ele ainda tem que fazer o teste porque 
+                    //ele pode ver um vizinho que ja esteja na arvore
+                    if(($vEmQ && !$uEmQ)|| !$vEmQ && $uEmQ ){
                        
                         $aresta[] = $this->grafo[$chave][$v];
                         $ori[] = $chave;
                         $dest[] = $v;
-                        // print "<pre> ".$chave;
-                        // print_r($aresta);
-                        // print "</pre>";
-                    }   
+              
+                    }  
                }
-
-            //    print"<br>";
+                
             }   
-
+            
+            //pega o menor valor de aresta
             $indiceMin = array_search(min($aresta),$aresta);
-            print "<pre>";
-            print_r($indiceMin);
-            print "</pre>";
+            
+            //soma o total no valor completo na arvore
             $valArvore = $valArvore + $aresta[$indiceMin]; 
+            
+            //salva na resposta , a origem o destino da aresta encontrada
             $S[] = [$ori[$indiceMin],$dest[$indiceMin]];
-            print "<pre>";
-            print_r($aresta);
-            print "</pre>";
+            
+            //salva o vertice que saiu de Q
+            $foraDeQ[$dest[$indiceMin]] = $Q[$dest[$indiceMin]]; 
+            
+            
             unset($Q[$dest[$indiceMin]]);
+        
+                
         }
+      
         return [$S,$valArvore];
     }
 

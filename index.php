@@ -262,13 +262,27 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         print max($tabelaCor[2]);
         */
 
-$grafo = new GrafoMatriz("testeSlidePrim.txt");
+$grafo = new GrafoMatriz("50vertices25%Arestas.txt");
 
 $tabelaResp = $grafo->retornaPrim();
 
-print "<pre>";
-print_r($tabelaResp);
-print "</pre>";
+
+
+print"Solução{";
+foreach($tabelaResp[0] as $j ){
+       
+     print " (".$grafo->labelVertice($j[0]).",".$grafo->labelVertice($j[1])."),";
+    
+}
+print"}<br>";
+
+print "Peso Total = ".$tabelaResp[1];
+
+
+
+//print "<pre>";
+//print_r($tabelaResp);
+//print "</pre>";
 
 
 
