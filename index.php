@@ -264,25 +264,12 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
 
 $grafo = new GrafoMatriz("50vertices25%Arestas.txt");
 
-$tabelaResp = $grafo->retornaPrim();
+//$tabelaResp = $grafo->retornaPrim();
+$tabelaResp = $grafo->retornaKruskal();
 
-
-
-print"Solução{";
-foreach($tabelaResp[0] as $j ){
-       
-     print " (".$grafo->labelVertice($j[0]).",".$grafo->labelVertice($j[1])."),";
-    
-}
-print"}<br>";
-
-print "Peso Total = ".$tabelaResp[1];
-
-
-
-//print "<pre>";
-//print_r($tabelaResp);
-//print "</pre>";
+print "<pre>";
+print_r($tabelaResp);
+print "</pre>";
 
 
 

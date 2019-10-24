@@ -307,5 +307,36 @@ abstract class Grafos {
         return [$S,$valArvore];
     }
 
+    protected function kruskal(){
+        $s = [];
+        $q = [];
+        $f = [];
+        /*foreach ($this->grafo as $key) {
+            foreach ($key as $value) {
+                if($value != 0){
+                    $q[] = $value;
+                }
+            }
+        }*/
+        foreach ($this->grafo as $vertice => $aresta) {
+            foreach ($aresta as $valor) {
+                if($valor != 0){
+                    $q[] = [$vertice, $valor];
+                 }
+            }
+        }
+
+        foreach($this->nomeVertices as $chave => $a){
+            $f[$chave] = [$chave];    
+        }
+        
+        while(!empty($q)){
+            $indiceMin = array_search(min($q),$q);
+            unset($q[$q]);
+        }
+
+        return $indiceMin;
+    }
+
 }
    

@@ -121,4 +121,8 @@ class GrafoMatriz extends Grafos{
     public function retornaPrim(){
         return parent :: prim();
     }
+
+    public function retornaKruskal(){
+        return parent::kruskal();
+    }
 }
