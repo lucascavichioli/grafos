@@ -262,14 +262,62 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         print max($tabelaCor[2]);
         */
 
-$grafo = new GrafoMatriz("50vertices25%Arestas.txt");
+$grafo = new GrafoMatriz("testeSlidePrim.txt");
 
-//$tabelaResp = $grafo->retornaPrim();
+// $tipoArvore="prim";
+$tipoArvore="kruskal";
+
+
+// $tabelaResp = $grafo->retornaPrim();
 $tabelaResp = $grafo->retornaKruskal();
 
-print "<pre>";
-print_r($tabelaResp);
-print "</pre>";
+print "Solução {";
+foreach($tabelaResp[0] as $v){
+    print "(".$grafo->labelVertice($v[0]).",".$grafo->labelVertice($v[1]).")";
+    
+}
+print "}<br>";
+
+
+
+if($tipoArvore == "kruskal"){
+    $chaveArray;
+    print "Floresta {";
+        foreach( $tabelaResp[1] as $chave => $v){
+        
+            print "{";
+            foreach( $v as $chave2 => $u){
+                $chaveArray = array_keys($v);
+                if($chave2 == end($chaveArray)){
+                    print $grafo->labelVertice($u);
+                }else{
+                    print $grafo->labelVertice($u).",";
+                }
+                
+            }
+            print"}";
+            
+        }
+        print "}<br>";
+        
+        print "Total Arvore :".$tabelaResp[2];
+        
+
+}else{
+    print "Total Arvore :".$tabelaResp[1];
+}
+
+
+
+
+
+
+
+
+
+// print "<pre>";
+// print_r($tabelaResp);
+// print "</pre>";
 
 
 

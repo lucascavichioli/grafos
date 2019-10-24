@@ -120,5 +120,9 @@ class GrafoLista extends Grafos {
     
      public function retornaPrim(){
         return parent :: prim();
+	}
+	
+	public function retornaKruskal(){
+        return parent::kruskal();
     }
 }
