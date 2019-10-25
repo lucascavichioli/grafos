@@ -262,15 +262,28 @@ echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
         print max($tabelaCor[2]);
         */
 
-$grafo = new GrafoMatriz("testeSlidePrim.txt");
+$grafo = new GrafoMatriz("500vertices25%Arestas.txt");
 
-// $tipoArvore="prim";
+ //$tipoArvore="prim";
 $tipoArvore="kruskal";
 
+// Armazena o timestamp antes da execucao do script
+$tm_inicio = microtime( true );
 
 // $tabelaResp = $grafo->retornaPrim();
 $tabelaResp = $grafo->retornaKruskal();
 
+// Armazena  o timestamp apos a execucao do script
+$tm_fim = microtime( true );
+
+// Calcula o tempo de execucao do script 
+$segundos = $tm_fim - $tm_inicio;
+$minutos = ($segundos / 60) % 60;
+
+// Exibe o tempo de execucao do script em segundos
+echo '<b>Tempo de Execucao:</b> '.$segundos.' Segundos </br>';
+echo '<b>Tempo de Execucao:</b> '.$minutos.' Minutos </br>';
+die();
 print "Solução {";
 foreach($tabelaResp[0] as $v){
     print "(".$grafo->labelVertice($v[0]).",".$grafo->labelVertice($v[1]).")";
