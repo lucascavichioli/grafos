@@ -314,22 +314,21 @@ abstract class Grafos {
 
     protected function seArvoresDiferente($f,$ori,$dest){
 
-        $naoEstaDentro = true;
+
         
         foreach($this->nomeVertices as  $chave => $u){
             if(isset($f[$chave])){
                 if(in_array($ori,$f[$chave]) && in_array($dest,$f[$chave])  ){
-                    $naoEstaDentro = false;
+                    return false;
                 }
-
-            }
-            
+            }  
         }
-        return $naoEstaDentro;
-
+        return true;
     }
 
     protected function kruskal(){
+        
+        
         $s = [];
         $q = [];
         $vArest = [];
@@ -339,7 +338,7 @@ abstract class Grafos {
         $forestDest = 0;
         $indiceMin = 0;
         $totArvore = 0;
-   
+    
 
         // inicializa o vetor que contem os o peso e os vetices das arestas
         foreach($this->nomeVertices as  $chave => $u){
@@ -347,28 +346,39 @@ abstract class Grafos {
             $f[$chave] = [$chave]; 
             foreach($this->vizinhos($chave) as $v){
                
-                
               //checa se nao tem uma estrada repititda, ao que esta sendo inserido, no vetor de vetices
-                if( !in_array([$chave,$v],$vArest) && !in_array([$v,$chave],$vArest) ){
+                
+                if($this->grafo[$chave][$v] != 0){
+                    if( !in_array([$chave,$v],$vArest) && !in_array([$v,$chave],$vArest) ){
                    
                     $q[] = $this->grafo[$chave][$v];
                     $vArest[] = [$chave,$v];
-                    // $ori[] = $chave;
-                    // $dest[] = $v;
-          
-                }  
+                 
+
+            
+                    } 
+                    
+                }
+                
+                 
            }
         }
+        
 
+      
         while(!empty($q)){
             $indiceMin = array_search(min($q),$q);
 
             //funcao para testar se uma arvore ja nao faz parate de outra
-            if($this->seArvoresDiferente($f,$vArest[$indiceMin][0],$vArest[$indiceMin][1])){
-                
+            
+            
+            if($this->seArvoresDiferente($f,$vArest[$indiceMin][0],$vArest[$indiceMin][1])){ 
+           
                 $s[] = $vArest[$indiceMin];
                 $totArvore += $q[$indiceMin];
-
+                
+                
+                
                  foreach($this->nomeVertices as  $chave => $u){
                     
                     // esse if é só pra chegar essa pisição do vetor nao foi excluida
@@ -392,16 +402,25 @@ abstract class Grafos {
                  }
 
                  unset($f[$forestDest]);
+     
             }
          
 
            
             unset($q[$indiceMin]);
             unset($vArest[$indiceMin]);
-
-
-
+            
+            
+           
+            
+            if(count($f) == 1){
+                $q = [];  
+            }
+            
+      
         }
+        
+        
 
         return [$s,$f,$totArvore];
       

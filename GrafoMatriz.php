@@ -7,6 +7,8 @@ class GrafoMatriz extends Grafos{
 
   
   function __construct(string $nomeArquivo){
+//     return  "Teste";
+//      die();
 		$arq = file($nomeArquivo);
 		$parametros = explode(" ",$arq[0]);
 		 parent::__construct((int)$parametros[2],(int)$parametros[3]);
@@ -25,6 +27,8 @@ class GrafoMatriz extends Grafos{
             $this->inserirAresta( (int) $aresta[0],(int) $aresta[1]);   
 		   }
 		 }
+      
+      
  
 	 }
     
